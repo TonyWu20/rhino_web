@@ -13,5 +13,7 @@ keywords.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = "0.7"
+axum = {version = "0.7", features=["tokio", "http1", "http2"]}
 tokio = { version = "1", features = ["full"] }
+hyper = { version = "0.14", features = ["full"] }
+tower-http = {version="0.5", features = ["full"]}
