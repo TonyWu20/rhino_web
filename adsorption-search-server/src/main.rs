@@ -1,4 +1,4 @@
-use axum::{response::Html, routing::get, serve::Serve, Router};
+use axum::{response::Html, routing::get, Router};
 use tower_http::services::ServeDir;
 
 #[tokio::main]
@@ -25,8 +25,4 @@ async fn main() {
 
 async fn handler() -> Html<&'static str> {
     Html(include_str!("../index.html"))
-}
-
-fn using_serve_dir() -> Router {
-    Router::new().nest_service("/assets", ServeDir::new("assets"))
 }

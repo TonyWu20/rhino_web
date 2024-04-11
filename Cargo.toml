@@ -1,0 +1,24 @@
+[workspace]
+
+members= [ "adsorption-search-server",
+"adsorption_search_wasm"
+]
+resolver = "2"
+
+
+[workspace.package]
+name = "web-model-adsorption-search"
+description = "Web app version of model-adsorption-search"
+authors = ["TonyWu20"]
+readme = "README.md"
+homepage = "https://github.com/TonyWu20/web-2D_model_adsorption_searcher"
+repository = "https://github.com/TonyWu20/web-2D_model_adsorption_searcher"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+keywords = [
+    "chemistry",
+    "computational_chemistry",
+    "linear_algebra",
+    "web"
+]
