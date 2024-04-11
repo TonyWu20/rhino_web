@@ -1,0 +1,17 @@
+[package]
+name = "adsorption-search-server"
+description = "Server backend for model-adsorption-search"
+authors.workspace = true
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+keywords.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
