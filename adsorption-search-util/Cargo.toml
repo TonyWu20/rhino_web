@@ -1,0 +1,15 @@
+[package]
+name = "adsorption-search-util"
+version = "0.1.0"
+author = ["Tony Wu <tony.w21@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[dependencies]
+chemrust-core = "0.2"
+chemrust-parser = "0.2"
+chemrust-scanner = "0.2"
+cell_reader = "0.2"
+castep-periodic-table = "0.2"
