@@ -1,5 +1,15 @@
-use axum::{response::Html, routing::get, Router};
-use tower_http::services::ServeDir;
+#![recursion_limit = "512"]
+use adsorption_search_ui::build_root_page;
+use axum::{
+    response::{Html, IntoResponse},
+    routing::{get, post},
+    Router,
+};
+use form_handler::accept_form;
+use tower_http::{limit::RequestBodyLimitLayer, services::ServeDir};
+
+mod form_handler;
+mod model_search_run;
 
 #[tokio::main]
 async fn main() {
@@ -9,11 +19,15 @@ async fn main() {
     // A closure or a function can be used as handler.
 
     let app: Router<()> = Router::new()
-        .route("/", get(handler))
-        .nest_service("/assets", ServeDir::new("assets"));
-    //        Router::new().route("/", get(|| async { "Hello, world!"}));
+        .route("/", get(root_page))
+        .nest_service("/assets", ServeDir::new("assets"))
+        .nest_service("/tempData", ServeDir::new("tempData"))
+        .route("/submit_form", post(accept_form))
+        .layer(RequestBodyLimitLayer::new(
+            20 * 1024 * 1024, // 20mb
+        ));
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
+    let listener = tokio::net::TcpListener::bind("10.147.17.25:3000")
         .await
         .unwrap();
 
@@ -23,6 +37,7 @@ async fn main() {
         .unwrap();
 }
 
-async fn handler() -> Html<&'static str> {
-    Html(include_str!("../index.html"))
+async fn root_page() -> impl IntoResponse {
+    let html = build_root_page().to_string();
+    Html(html)
 }
