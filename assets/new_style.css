@@ -1,0 +1,31 @@
+body {
+  font-family: Helvetica Neue, sans-serif;
+  font-size: 100.00%;
+  margin-right: 25.00%;
+  margin-left: 25.00%;
+}
+label {
+  display: block;
+  font-size: 1.50em;
+  font-weight: bold;
+  margin-block-start: 0.67em;
+}
+input[type=text], select, textarea {
+  width: 100.00%;
+  padding-top: 12.00px;
+  padding-right: 12.00px;
+  padding-bottom: 12.00px;
+  padding-left: 12.00px;
+  cursor: pointer;
+}
+input[type=number] {
+  min-width: 45.00%;
+  max-width: 100.00%;
+  padding-top: 12.00px;
+  padding-right: 12.00px;
+  padding-bottom: 12.00px;
+  padding-left: 12.00px;
+}
+* {
+  box-sizing: border-box;
+}
