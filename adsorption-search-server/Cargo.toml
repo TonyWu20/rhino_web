@@ -13,7 +13,16 @@ keywords.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = {version = "0.7", features=["tokio", "http1", "http2"]}
+axum = {version = "0.7", features=["tokio", "http1", "http2", "form","multipart"]}
 tokio = { version = "1", features = ["full"] }
 hyper = { version = "0.14", features = ["full"] }
 tower-http = {version="0.5", features = ["full"]}
+serde = {version="1.0", features=["derive"]}
+html = "0.6.3"
+axum_typed_multipart = "0.11.1"
+tempfile = "3.10.1"
+adsorption-search-util = {path = "../adsorption-search-util"}
+adsorption-search-ui = { path = "../adsorption-search-ui"}
+castep-periodic-table = "0.2.2"
+http-body-util = "0.1.1"
+tracing = "0.1.40"

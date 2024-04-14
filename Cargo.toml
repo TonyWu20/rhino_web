@@ -1,7 +1,8 @@
 [workspace]
 
 members= [ "adsorption-search-server",
-"adsorption_search_wasm"
+"adsorption-search-ui",
+"adsorption-search-util",
 ]
 resolver = "2"
 

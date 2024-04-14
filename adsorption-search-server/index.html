@@ -15,40 +15,40 @@
       javascript in your browser.</noscript
     >
     <div class="alert"></div>
-    <form id="parameter-form">
-      <legend><h1>Config of the programme</h1></legend>
+    <legend><h1>Config of the programme</h1></legend>
+    <form id="parameter-form" action="/param_form" , method="POST">
       <p>File</p>
       <input type="submit" name="upload" />
       <p>
-        <label for="Element-symbol"><h2>Element Symbol</h2></label>
-        <input type="text" name="Element" required="true" />
+        <label for="element-symbol"><h2>Element Symbol</h2></label>
+        <input type="text" name="element_symbol" required="true" />
       </p>
       <p>
-        <label for="Target-bondlength">
+        <label for="target_bondlength">
           <h2>Enter target bondlength</h2>
         </label>
-        <input type="text" name="Target Bondlength" required />
+        <input type="text" name="target_bondlength" required />
       </p>
       <p>
         <label for="x-range">
           <h2>Enter range of x-axis to search (in fractional coordinate)</h2>
         </label>
-        <input type="text" name="x-min" value="0.0" /> -
-        <input type="text" name="x-max" value="1.0" />
+        <input type="text" name="x_min" value="0.0" /> -
+        <input type="text" name="x_max" value="1.0" />
       </p>
       <p>
         <label for="y-range">
           <h2>Enter range of y-axis to search (in fractional coordinate)</h2>
         </label>
-        <input type="text" name="y-min" value="0.0" /> -
-        <input type="text" name="y-max" value="1.0" />
+        <input type="text" name="y_min" value="0.0" /> -
+        <input type="text" name="y_max" value="1.0" />
       </p>
       <p>
         <label for="z-range">
           <h2>Enter range of z-axis to search (in fractional coordinate)</h2>
         </label>
-        <input type="text" name="z-min" value="0.0" /> -
-        <input type="text" name="z-max" value="1.0" />
+        <input type="text" name="z_min" value="0.0" /> -
+        <input type="text" name="z_max" value="1.0" />
       </p>
       <p>
         <button type="submit" id="submit">Submit</button>
