@@ -1,6 +1,6 @@
 use std::io::Read;
 
-use adsorption_search_ui::{build_error_symbol_page, build_upload_response_page};
+use adsorption_search_ui::html_pages::{build_error_symbol_page, build_upload_response_page};
 use adsorption_search_util::{create_task_table, search_with_task_table};
 use axum::{
     body::Body,
@@ -117,7 +117,7 @@ pub async fn accept_form(
         z_max,
     };
     let _results = search_with_task_table(&task_table);
-    let text = format!("{:#?}", param_form);
-    let page = build_upload_response_page(text).to_string();
+    let param_text = param_form.export_to_html();
+    let page = build_upload_response_page(param_text).to_string();
     Html(page)
 }
