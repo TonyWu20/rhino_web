@@ -1,4 +1,4 @@
-use axum_typed_multipart::{FieldData, TryFromMultipart, TypedMultipart};
+use axum_typed_multipart::{FieldData, TryFromMultipart};
 use serde::Deserialize;
 use tempfile::NamedTempFile;
 

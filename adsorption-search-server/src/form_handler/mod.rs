@@ -1,14 +1,13 @@
 use std::io::Read;
 
-use adsorption_search_ui::build_upload_response_page;
+use adsorption_search_ui::{build_error_symbol_page, build_upload_response_page};
 use adsorption_search_util::{create_task_table, search_with_task_table};
 use axum::{
-    body::{Body, Bytes},
-    extract::{Multipart, Request},
-    http::StatusCode,
+    body::Body,
+    extract::Request,
+    http::header::CONTENT_TYPE,
     middleware::Next,
-    response::{self, Html, IntoResponse, Response},
-    RequestExt,
+    response::{Html, IntoResponse, Response},
 };
 use axum_typed_multipart::TypedMultipart;
 use http_body_util::BodyExt;
@@ -18,70 +17,61 @@ use form_data::{FormData, ParamForm};
 
 mod form_data;
 
-pub async fn print_request_response(
-    req: Request,
-    next: Next,
-) -> Result<impl IntoResponse, (StatusCode, String)> {
-    let (parts, body) = req.into_parts();
-    let bytes = buffer_and_print("request", body).await?;
-    println!("{:#?}", bytes);
-    let req = Request::from_parts(parts, Body::from(bytes));
-
-    let res = next.run(req).await;
-
-    let (parts, body) = res.into_parts();
-    let bytes = buffer_and_print("response", body).await?;
-    let res = Response::from_parts(parts, Body::from(bytes));
-
-    Ok(res)
+#[derive(Debug)]
+pub enum ElementSymbolError {
+    FormDataNotCollected,
+    InvalidSymbol(String),
 }
 
-async fn buffer_and_print<B>(direction: &str, body: B) -> Result<Bytes, (StatusCode, String)>
-where
-    B: axum::body::HttpBody<Data = Bytes>,
-    B::Error: std::fmt::Display,
-{
-    let bytes = match body.collect().await {
-        Ok(collected) => collected.to_bytes(),
-        Err(err) => {
-            return Err((
-                StatusCode::BAD_REQUEST,
-                format!("failed to read {direction} body: {err}"),
-            ));
+impl IntoResponse for ElementSymbolError {
+    fn into_response(self) -> Response {
+        match self {
+            Self::InvalidSymbol(symbol) => {
+                Html(build_error_symbol_page(symbol).to_string()).into_response()
+            }
+            Self::FormDataNotCollected => Html("No form data collected").into_response(),
         }
-    };
-
-    if let Ok(body) = std::str::from_utf8(&bytes) {
-        tracing::debug!("{direction} body = {body:?}");
     }
-
-    Ok(bytes)
 }
 
 /// Layer to validate the param form input.
-pub async fn validate_form(
-    data: TypedMultipart<FormData>,
-    request: Request,
-    next: Next,
-) -> Result<Response, StatusCode> {
-    // request.body();
-    // if let None = ELEMENT_TABLE.get_by_symbol(&element_symbol) {
-    //     return Err(StatusCode::UNPROCESSABLE_ENTITY);
-    // }
-    // let param_form = ParamForm {
-    //     element_symbol,
-    //     target_bondlength,
-    //     x_min,
-    //     x_max,
-    //     y_min,
-    //     y_max,
-    //     z_min,
-    //     z_max,
-    // };
-    // let param_text = format!("{:#?}", param_form);
-    // let page = build_upload_response_page(param_text).to_string();
-    let response = next.run(request).await;
-    Ok(response)
+pub async fn validate_form(request: Request, next: Next) -> impl IntoResponse {
+    let (parts, body) = request.into_parts();
+    let content_type_header = parts.headers.get(CONTENT_TYPE);
+    let content_type: Option<&str> = content_type_header.and_then(|value| value.to_str().ok());
+    let boundary = content_type
+        .unwrap()
+        .strip_prefix("multipart/form-data; boundary=")
+        .unwrap();
+    let bytes = match body.collect().await {
+        Ok(collected) => collected.to_bytes(),
+        Err(_) => {
+            return Err(ElementSymbolError::FormDataNotCollected);
+        }
+    };
+    let uploaded_data = std::str::from_utf8(&bytes).unwrap();
+    let element_symbol_line_prefix =
+        "\r\nContent-Disposition: form-data; name=\"element_symbol\"\r\n";
+    let element_symbol = uploaded_data
+        .split(boundary)
+        .into_iter()
+        .filter(|s| s.starts_with(element_symbol_line_prefix))
+        .next()
+        .unwrap()
+        .strip_prefix(element_symbol_line_prefix)
+        .unwrap()
+        .strip_prefix("\r\n")
+        .unwrap()
+        .strip_suffix("\r\n--")
+        .unwrap();
+    match ELEMENT_TABLE.get_by_symbol(element_symbol) {
+        Some(_) => {
+            let req = Request::from_parts(parts, Body::from(bytes));
+            let response = next.run(req).await;
+            Ok(response)
+        }
+        None => Err(ElementSymbolError::InvalidSymbol(element_symbol.into())),
+    }
 }
 
 /// Handler to process form submission.
@@ -107,7 +97,7 @@ pub async fn accept_form(
         .expect("Unable to read file");
     let task_table = create_task_table(
         &model_content,
-        element_symbol,
+        element_symbol.clone(),
         target_bondlength,
         x_min,
         x_max,
@@ -116,7 +106,18 @@ pub async fn accept_form(
         z_min,
         z_max,
     );
-    let results = search_with_task_table(&task_table);
-    let text = format!("{:#?}", results);
-    Html(text)
+    let param_form = ParamForm {
+        element_symbol,
+        target_bondlength,
+        x_min,
+        x_max,
+        y_min,
+        y_max,
+        z_min,
+        z_max,
+    };
+    let _results = search_with_task_table(&task_table);
+    let text = format!("{:#?}", param_form);
+    let page = build_upload_response_page(text).to_string();
+    Html(page)
 }
