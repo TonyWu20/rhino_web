@@ -13,6 +13,7 @@ Basically, the initial workable version of a backend has been developed.
 - [x] Model Parser
   - [x] `.cell`
   - [x] `.msi`
+  - [ ] **`.cif`**
   - [ ] Other
 - [x] Adsorption site searcher
 - [x] Seed file generator
@@ -22,17 +23,19 @@ Basically, the initial workable version of a backend has been developed.
 
 We need a website page to complete the following functions:
 
-- [ ] Upload files
+- [x] Upload files
   - [ ] Verifications of the uploaded file formats and contents
-- [ ] Communicate with the backend, including:
-  - [ ] Parameter inputs
-  - [ ] Message outputs
+- [x] Communicate with the backend, including:
+  - [x] Parameter inputs
+  - [x] Message outputs
 - [ ] Download generated seed files
+- [ ] Future: Add a basic 3D renderer for the display and interaction of the uploaded model.
 
 ### Server
 
 We need a server runtime to handle the following issues:
 
-- [ ] Hosts the backend application.
-- [ ] Maintains a file system.
-- [ ] Allows file uploads and downloads.
+- [x] Hosts the backend application.
+- [ ] Maintains a file system. (Is it necessary to save uploaded file to local first?)
+- [x] Allows file uploads and downloads.
+- [x] Communicates with frontend
