@@ -1,7 +1,7 @@
 #![recursion_limit = "512"]
 
 pub use css_styles::build_css_sheet;
-pub use html_pages::{build_root_page, build_upload_response_page};
+pub use html_pages::{build_error_symbol_page, build_root_page, build_upload_response_page};
 
 mod css_styles;
 mod html_pages;
