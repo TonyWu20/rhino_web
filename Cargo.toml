@@ -3,6 +3,7 @@
 members= [ "adsorption-search-server",
 "adsorption-search-ui",
 "adsorption-search-util",
+"adsorption-search-ui-wasm"
 ]
 resolver = "2"
 
