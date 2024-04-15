@@ -1,8 +1,9 @@
 #![recursion_limit = "512"]
-use adsorption_search_ui::build_root_page;
+use adsorption_search_ui::{css_styles::build_css_sheet, html_pages::build_root_page};
 use axum::{
+    http::StatusCode,
     middleware,
-    response::{Html, IntoResponse},
+    response::{Html, IntoResponse, Response},
     routing::{get, post},
     Router,
 };
@@ -23,7 +24,7 @@ async fn main() {
         .route("/submit_form", post(accept_form))
         .route_layer(middleware::from_fn(validate_form))
         .route("/", get(root_page))
-        .nest_service("/assets", ServeDir::new("assets"))
+        .route("/new_style.css", get(css_sheet))
         .nest_service("/tempData", ServeDir::new("tempData"))
         .layer(RequestBodyLimitLayer::new(
             20 * 1024 * 1024, // 20mb
@@ -42,4 +43,13 @@ async fn main() {
 async fn root_page() -> impl IntoResponse {
     let html = build_root_page().to_string();
     Html(html)
+}
+
+async fn css_sheet() -> impl IntoResponse {
+    let css_sheet = build_css_sheet();
+    Response::builder()
+        .status(StatusCode::OK)
+        .header("Content-Type", "text/css")
+        .body(format!("{}", css_sheet))
+        .unwrap()
 }
