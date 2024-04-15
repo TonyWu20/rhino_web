@@ -11,10 +11,12 @@ pub fn build_root_page() -> Html {
 fn body(x: &mut BodyBuilder) -> &mut BodyBuilder {
     x.header(|h| h.heading_1(|h1| h1.text("Config of the Program")))
         .form(parameter_form)
+        .script(|script| script.src("/assets/my_wasm.js").type_("module"))
 }
 
 fn parameter_form(form_builder: &mut FormBuilder) -> &mut FormBuilder {
     let mut x = form_builder
+        .id("param_form")
         .action("/submit_form")
         .method("post")
         .enctype("multipart/form-data")
@@ -26,7 +28,13 @@ fn parameter_form(form_builder: &mut FormBuilder) -> &mut FormBuilder {
         })
         .input(|i| i.type_("file").name("file").required("true"))
         .paragraph(|p| p.label(|l| l.text("Element Symbol")))
-        .input(|i| i.type_("text").name("element_symbol").required("true"))
+        .input(|i| {
+            i.type_("text")
+                .name("element_symbol")
+                .id("element_symbol")
+                .required("true")
+        })
+        .span(|span| span.class("error"))
         .paragraph(|p| p.label(|l| l.text("Target bondlength (Å)")))
         .input(|i| {
             i.type_("number")
@@ -40,7 +48,7 @@ fn parameter_form(form_builder: &mut FormBuilder) -> &mut FormBuilder {
     for axis in ["x", "y", "z"] {
         x = range_input(x, axis);
     }
-    x.button(|button| button.type_("submit").text("Submit and Run"))
+    x.input(|input| input.type_("submit").id("submit").value("Submit and Run"))
 }
 
 fn range_input<'a>(form_builder: &'a mut FormBuilder, axis: &'a str) -> &'a mut FormBuilder {

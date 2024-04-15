@@ -13,5 +13,5 @@ pub fn head(x: &mut HeadBuilder) -> &mut HeadBuilder {
                 .content("width=device-width, initial-scale=1")
                 .charset("utf-8")
         })
-        .link(|link| link.rel("stylesheet").href("/new_style.css"))
+        .link(|link| link.rel("stylesheet").href("/assets/new_style.css"))
 }
