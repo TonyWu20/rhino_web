@@ -37,7 +37,7 @@ async fn main() {
             "/submit_form",
             post(accept_form).route_layer(middleware::from_fn(validate_form)),
         )
-        .route("/js-wasm.js", get(load_js_wasm))
+        .route("/my_wasm.js", get(load_js_wasm))
         .route("/new_style.css", get(css_sheet))
         .layer(RequestBodyLimitLayer::new(
             20 * 1024 * 1024, // 20mb
@@ -54,7 +54,9 @@ async fn main() {
                 .on_response(trace::DefaultOnResponse::new().level(Level::INFO)),
         );
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    // let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    // let addr = SocketAddr::from(([192, 168, 1, 106], 3000));
+    let addr = SocketAddr::from(([10, 147, 17, 25], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     tracing::info!("listening on {}", addr);
 
@@ -82,6 +84,6 @@ async fn load_js_wasm() -> impl IntoResponse {
     Response::builder()
         .status(StatusCode::OK)
         .header("Content-Type", "text/javascript")
-        .body(include_str!("../../js-wasm.js").to_string())
+        .body(include_str!("../../assets/my_wasm.js").to_string())
         .unwrap()
 }
