@@ -1,5 +1,6 @@
 use castep_periodic_table::{data::ELEMENT_TABLE, element::LookupElement};
 use gloo::{
+    console::log,
     dialogs::alert,
     events::{EventListener, EventListenerOptions},
     utils::document,
@@ -30,7 +31,14 @@ fn listen_text_input_change() {
             .dyn_into::<web_sys::HtmlInputElement>()
             .unwrap()
             .value();
-        instant_error(&element_symbol_input);
+        let input_field = document().get_element_by_id("element_symbol").unwrap();
+        if !check_symbol_input(&element_symbol_input) {
+            instant_span_error(true);
+            input_field_error(&input_field, true);
+        } else {
+            instant_span_error(false);
+            input_field_error(&input_field, false);
+        }
     });
     on_change.forget();
 }
@@ -50,7 +58,14 @@ fn listen_text_input_paste() {
             .dyn_into::<web_sys::HtmlInputElement>()
             .unwrap()
             .value();
-        instant_error(&element_symbol_input);
+        let input_field = document().get_element_by_id("element_symbol").unwrap();
+        if !check_symbol_input(&element_symbol_input) {
+            instant_span_error(true);
+            input_field_error(&input_field, true);
+        } else {
+            instant_span_error(false);
+            input_field_error(&input_field, false);
+        }
     });
     on_paste.forget()
 }
@@ -70,7 +85,15 @@ fn listen_text_input_input() {
             .dyn_into::<web_sys::HtmlInputElement>()
             .unwrap()
             .value();
-        instant_error(&element_symbol_input);
+
+        let input_field = document().get_element_by_id("element_symbol").unwrap();
+        if !check_symbol_input(&element_symbol_input) {
+            instant_span_error(true);
+            input_field_error(&input_field, true);
+        } else {
+            instant_span_error(false);
+            input_field_error(&input_field, false);
+        }
     });
     on_input.forget()
 }
@@ -108,12 +131,12 @@ pub fn listen_form_submit_symbol_input() {
     on_submit.forget()
 }
 
-fn instant_error(element_symbol: &str) {
+fn instant_span_error(error: bool) {
     let error_span = document()
         .get_element_by_id("error-hint")
         .expect("No `error-hint` span");
-    if !check_symbol_input(element_symbol) {
-        show_error(&error_span);
+    if error {
+        show_element_symbol_error(&error_span);
     } else {
         error_span.set_text_content(None);
         error_span.set_class_name("error");
@@ -124,20 +147,23 @@ fn alert_error(element_symbol: &str) {
     let error_span = document()
         .get_element_by_id("error-hint")
         .expect("No `error-hint` span");
-    if !check_symbol_input(element_symbol) {
-        let message = format!("Invalid element symbol! Input: {}", element_symbol);
-        alert(&message);
-        error_span.set_text_content(Some("Invalid element symbol!"));
-        error_span.set_class_name("error active");
-    } else {
-        error_span.set_text_content(None);
-        error_span.set_class_name("error");
-    }
+    let message = format!("Invalid element symbol! Input: {}", element_symbol);
+    alert(&message);
+    error_span.set_text_content(Some("Invalid element symbol!"));
+    error_span.set_class_name("error active");
 }
 
-fn show_error(error_element: &Element) {
+fn show_element_symbol_error(error_element: &Element) {
     error_element.set_text_content(Some("Invalid element symbol!"));
     error_element.set_class_name("error active");
+}
+
+fn input_field_error(error_element: &Element, error: bool) {
+    if error {
+        error_element.set_class_name("invalid");
+    } else {
+        error_element.set_class_name("valid");
+    }
 }
 
 #[wasm_bindgen]
