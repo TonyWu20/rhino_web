@@ -34,7 +34,7 @@ fn parameter_form(form_builder: &mut FormBuilder) -> &mut FormBuilder {
                 .id("element_symbol")
                 .required("true")
         })
-        .span(|span| span.class("error"))
+        .span(|span| span.class("error").id("error-hint"))
         .paragraph(|p| p.label(|l| l.text("Target bondlength (Å)")))
         .input(|i| {
             i.type_("number")
