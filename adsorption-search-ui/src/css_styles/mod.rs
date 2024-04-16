@@ -4,7 +4,10 @@ use css_style::prelude::*;
 
 use self::{
     body::body_style,
-    form_elements::{all_box_sizing, input_number_style, input_text_style, label_style},
+    form_elements::{
+        all_box_sizing, error_active, error_message, input_number_style, input_text_style,
+        label_style,
+    },
 };
 
 mod body;
@@ -17,6 +20,8 @@ pub fn build_css_sheet() -> CssSheet {
         input_text_style(),
         input_number_style(),
         all_box_sizing(),
+        error_message(),
+        error_active(),
     ];
     CssSheet { components }
 }

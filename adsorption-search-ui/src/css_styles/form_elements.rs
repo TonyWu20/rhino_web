@@ -1,6 +1,8 @@
 use css_style::{
+    color::{self, palette::FromColor},
     prelude::*,
     unit::{em, percent, px},
+    Color,
 };
 
 use super::ElementStyle;
@@ -47,6 +49,30 @@ pub fn all_box_sizing() -> ElementStyle {
     ElementStyle::builder()
         .with_name("*")
         .with_style(style().insert("box-sizing", "border-box"))
+        .build()
+        .unwrap()
+}
+
+pub fn error_message() -> ElementStyle {
+    ElementStyle::builder()
+        .with_name(".error")
+        .with_style(
+            style()
+                .and_size(|size| size.width(percent(1.0)))
+                .and_padding(|pad| pad.zero())
+                .and_font(|font| font.size(percent(0.8)))
+                .insert("background-color", "#900")
+                .insert("color", "white")
+                .insert("border-radius", "0 0 5px 5px"),
+        )
+        .build()
+        .unwrap()
+}
+
+pub fn error_active() -> ElementStyle {
+    ElementStyle::builder()
+        .with_name(".error.active")
+        .with_style(style().and_padding(|pad| pad.all(em(0.3))))
         .build()
         .unwrap()
 }
