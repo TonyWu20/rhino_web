@@ -28,6 +28,9 @@ We need a website page to complete the following functions:
 - [x] Communicate with the backend, including:
   - [x] Parameter inputs
   - [x] Message outputs
+- [x] Client-side form validation
+  - [x] Input validation
+    - [x] Element symbol
 - [ ] Download generated seed files
 - [ ] Future: Add a basic 3D renderer for the display and interaction of the uploaded model.
 
