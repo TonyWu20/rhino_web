@@ -5,8 +5,8 @@ use css_style::prelude::*;
 use self::{
     body::body_style,
     form_elements::{
-        all_box_sizing, error_active, error_message, input_number_style, input_text_style,
-        label_style,
+        all_box_sizing, error_active, error_message, input_error_focus_style, input_error_style,
+        input_number_style, input_text_style, label_style,
     },
 };
 
@@ -19,6 +19,8 @@ pub fn build_css_sheet() -> CssSheet {
         label_style(),
         input_text_style(),
         input_number_style(),
+        input_error_style(),
+        input_error_focus_style(),
         all_box_sizing(),
         error_message(),
         error_active(),

@@ -1,8 +1,6 @@
 use css_style::{
-    color::{self, palette::FromColor},
     prelude::*,
     unit::{em, percent, px},
-    Color,
 };
 
 use super::ElementStyle;
@@ -41,6 +39,26 @@ pub fn input_number_style() -> ElementStyle {
                 .and_size(|size| size.max_width(percent(1.0)).min_width(0.45))
                 .and_padding(|pad| pad.all(px(12))),
         )
+        .build()
+        .unwrap()
+}
+
+pub fn input_error_style() -> ElementStyle {
+    ElementStyle::builder()
+        .with_name("input.invalid")
+        .with_style(
+            style()
+                .insert("border-color", "#900")
+                .insert("background-color", "#fdd"),
+        )
+        .build()
+        .unwrap()
+}
+
+pub fn input_error_focus_style() -> ElementStyle {
+    ElementStyle::builder()
+        .with_name("input:focus.invalid")
+        .with_style(style().insert("outline", "none"))
         .build()
         .unwrap()
 }
