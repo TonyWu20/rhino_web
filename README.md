@@ -25,7 +25,7 @@ But it requires a revision to make it handle errors better in the production sta
 We need a website page to complete the following functions:
 
 - [x] Upload files
-  - [ ] Verifications of the uploaded file formats and contents
+  - [x] Verifications of the uploaded file formats and contents
 - [x] Communicate with the backend, including:
   - [x] Parameter inputs
   - [x] Message outputs
@@ -42,4 +42,6 @@ We need a server runtime to handle the following issues:
 - [x] Hosts the backend application.
 - [ ] Maintains a file system. (Is it necessary to save uploaded file to local first?)
 - [x] Allows file uploads and downloads.
+- [x] Server-side form validation
+- [ ] Server-side file upload validation
 - [x] Communicates with frontend
