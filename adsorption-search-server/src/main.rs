@@ -1,21 +1,22 @@
 #![recursion_limit = "512"]
 use std::net::SocketAddr;
 
-use adsorption_search_ui::{css_styles::build_css_sheet, html_pages::build_root_page};
+use adsorption_search_ui::{css_styles::build_css_sheet, html_pages::root_page::build_root_page};
 use axum::{
     http::StatusCode,
-    middleware,
     response::{Html, IntoResponse, Response},
     routing::{get, post},
     Router,
 };
-use form_handler::{accept_form, validate_form};
+use form_handler::accept_form;
 use tower_http::{
     limit::RequestBodyLimitLayer,
     services::ServeDir,
     trace::{self, TraceLayer},
 };
 use tracing::Level;
+
+use crate::form_handler::error_handle::error_router;
 
 mod form_handler;
 mod model_search_run;
@@ -33,12 +34,10 @@ async fn main() {
         .route("/", get(root_page))
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/tempData", ServeDir::new("tempData"))
-        .route(
-            "/submit_form",
-            post(accept_form).route_layer(middleware::from_fn(validate_form)),
-        )
+        .route("/submit_form", post(accept_form))
         .route("/my_wasm.js", get(load_js_wasm))
         .route("/new_style.css", get(css_sheet))
+        .nest("/form_error", error_router())
         .layer(RequestBodyLimitLayer::new(
             20 * 1024 * 1024, // 20mb
         ))
@@ -67,8 +66,7 @@ async fn main() {
 }
 
 async fn root_page() -> impl IntoResponse {
-    let html = build_root_page().to_string();
-    Html(html)
+    Html(build_root_page().to_string())
 }
 
 async fn css_sheet() -> impl IntoResponse {
