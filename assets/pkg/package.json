@@ -1,0 +1,30 @@
+{
+  "name": "adsorption-search-ui-wasm",
+  "collaborators": [
+    "TonyWu20"
+  ],
+  "description": "Use WebAssembly to assist frontend interactions",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TonyWu20/web-2D_model_adsorption_searcher"
+  },
+  "files": [
+    "adsorption_search_ui_wasm_bg.wasm",
+    "adsorption_search_ui_wasm.js",
+    "adsorption_search_ui_wasm.d.ts"
+  ],
+  "module": "adsorption_search_ui_wasm.js",
+  "homepage": "https://github.com/TonyWu20/web-2D_model_adsorption_searcher",
+  "types": "adsorption_search_ui_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "keywords": [
+    "chemistry",
+    "computational_chemistry",
+    "linear_algebra",
+    "web"
+  ]
+}
