@@ -10,6 +10,7 @@ use axum::{
 };
 use form_handler::accept_form;
 use tower_http::{
+    compression::CompressionLayer,
     limit::RequestBodyLimitLayer,
     services::ServeDir,
     trace::{self, TraceLayer},
@@ -28,7 +29,7 @@ async fn main() {
     // `axum::response::IntoResponse`.
     // A closure or a function can be used as handler.
 
-    tracing_subscriber::fmt().with_target(false).pretty().init();
+    tracing_subscriber::fmt().with_target(true).compact().init();
 
     let app: Router<()> = Router::new()
         .route("/", get(root_page))
@@ -41,6 +42,7 @@ async fn main() {
         .layer(RequestBodyLimitLayer::new(
             20 * 1024 * 1024, // 20mb
         ))
+        .layer(CompressionLayer::new())
         // Applies a tower::Layer to all routes in the router
         // Adds high level tracing to service
         .layer(
