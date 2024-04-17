@@ -9,6 +9,7 @@ This is a roadmap document of the project.
 ### Backend
 
 Basically, the initial workable version of a backend has been developed.
+But it requires a revision to make it handle errors better in the production stage.
 
 - [x] Model Parser
   - [x] `.cell`
