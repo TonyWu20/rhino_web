@@ -1,6 +1,5 @@
 use castep_periodic_table::{data::ELEMENT_TABLE, element::LookupElement};
 use gloo::{
-    console::log,
     dialogs::alert,
     events::{EventListener, EventListenerOptions},
     utils::document,
