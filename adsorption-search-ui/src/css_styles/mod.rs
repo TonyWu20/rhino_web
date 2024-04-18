@@ -85,8 +85,8 @@ impl Display for ElementStyle {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let inline_style = format!("{}", self.style);
         let splitted_text: Vec<String> = inline_style
-            .split(";")
-            .filter(|text| text.len() > 0)
+            .split(';')
+            .filter(|text| !text.is_empty())
             .map(|text| format!("  {text};\n"))
             .collect();
         let style = splitted_text.concat();
