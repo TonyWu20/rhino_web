@@ -19,6 +19,7 @@ pub struct TaskTable<'a> {
                 // pub(crate) edft: bool,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub fn create_task_table(
     model_content: &str,
     element_symbol: String,
@@ -41,7 +42,6 @@ pub fn create_task_table(
         z_min,
         z_max,
     }
-    .into()
 }
 
 impl<'a> TaskTable<'a> {
