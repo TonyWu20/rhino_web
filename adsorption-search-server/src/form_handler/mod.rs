@@ -2,15 +2,8 @@ use std::{io::Read, path::Path};
 
 use adsorption_search_ui::html_pages::upload_response_page::build_upload_response_page;
 use adsorption_search_util::{create_task_table, search_with_task_table};
-use axum::{
-    body::Body,
-    extract::Request,
-    http::header::CONTENT_TYPE,
-    middleware::Next,
-    response::{Html, IntoResponse},
-};
+use axum::response::{Html, IntoResponse};
 use axum_typed_multipart::TypedMultipart;
-use http_body_util::BodyExt;
 
 use castep_periodic_table::{data::ELEMENT_TABLE, element::LookupElement};
 use error_handle::FormSubmitError;
@@ -47,7 +40,7 @@ pub async fn accept_form(
         ))?
         .to_str()
         .unwrap_or("n/a"); // Fallback when the `OsStr` is not valid Unicode.
-    if ACCEPT_EXTENSIONS.contains(&file_extension) == false {
+    if !ACCEPT_EXTENSIONS.contains(&file_extension) {
         return Err(FormSubmitError::InvalidFileFormat(
             FormatError::ExtensionNotAcceptable,
         ));
