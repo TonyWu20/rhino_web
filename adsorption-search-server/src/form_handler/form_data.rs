@@ -80,7 +80,7 @@ impl ParamForm {
             self.z_min(),
             self.z_max()
         );
-        let body = vec![
+        let body = [
             element_line,
             bondlength_line,
             x_range_line,

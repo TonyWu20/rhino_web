@@ -23,7 +23,9 @@ axum_typed_multipart = "0.11.1"
 tempfile = "3.10.1"
 adsorption-search-util = {path = "../adsorption-search-util"}
 adsorption-search-ui = { path = "../adsorption-search-ui"}
-castep-periodic-table = "0.3.0"
+castep-periodic-table = "0.3.1"
 http-body-util = "0.1.1"
 tracing = "0.1"
 tracing-subscriber = "0.3"
+zip = "1.1.1"
+chrono = "0.4.38"

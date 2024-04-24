@@ -33,6 +33,7 @@ We need a website page to complete the following functions:
   - [x] Input validation
     - [x] Element symbol
 - [ ] Download generated seed files
+  - [x] Download button and actions
 - [ ] Future: Add a basic 3D renderer for the display and interaction of the uploaded model.
 
 ### Server
@@ -41,6 +42,7 @@ We need a server runtime to handle the following issues:
 
 - [x] Hosts the backend application.
 - [ ] Maintains a file system. (Is it necessary to save uploaded file to local first?)
+  - [x] Use local static storage.
 - [x] Allows file uploads and downloads.
 - [x] Server-side form validation
 - [ ] Server-side file upload validation

@@ -17,7 +17,7 @@ use tower_http::{
 };
 use tracing::Level;
 
-use crate::form_handler::error_handle::error_router;
+use crate::form_handler::{download_result, error_handle::form_error_router};
 
 mod form_handler;
 mod model_search_run;
@@ -36,9 +36,10 @@ async fn main() {
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/tempData", ServeDir::new("tempData"))
         .route("/submit_form", post(accept_form))
+        .route("/download_file/:filename", get(download_result))
         .route("/my_wasm.js", get(load_js_wasm))
         .route("/new_style.css", get(css_sheet))
-        .nest("/form_error", error_router())
+        .nest("/form_error", form_error_router())
         .layer(RequestBodyLimitLayer::new(
             20 * 1024 * 1024, // 20mb
         ))
