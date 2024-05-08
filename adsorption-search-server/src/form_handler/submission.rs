@@ -5,7 +5,9 @@ use std::{
 };
 
 use adsorption_search_ui::html_pages::upload_response_page::build_upload_response_page;
-use adsorption_search_util::{create_task_table, search_with_task_table};
+use adsorption_search_util::{
+    create_task_table, filtered_atoms, init_checker, load_model, search_with_task_table,
+};
 use axum::response::{Html, IntoResponse};
 use axum_typed_multipart::{FieldMetadata, TypedMultipart};
 
@@ -36,9 +38,9 @@ pub async fn accept_form(
     let file_name: String = validate_filename(file.metadata)?;
     let file_path = Path::new(&file_name);
     // Check extension
-    validate_extension(&file_path)?;
+    let extension = validate_extension(file_path)?;
     // Check if the symbol input is valid.
-    ELEMENT_TABLE
+    let symbol = ELEMENT_TABLE
         .get_by_symbol(&element_symbol)
         .ok_or(FormSubmitError::InvalidSymbol(element_symbol.clone()))?;
     // Open the file, try to read to string and parse.
@@ -47,18 +49,13 @@ pub async fn accept_form(
     model_file
         .read_to_string(&mut model_content)
         .map_err(|_| FormSubmitError::ParseFileError(FileError::NotStringContent))?;
-
-    let task_table = create_task_table(
-        &model_content,
-        element_symbol.clone(),
-        target_bondlength,
-        x_min,
-        x_max,
-        y_min,
-        y_max,
-        z_min,
-        z_max,
-    );
+    let checker = init_checker(symbol, target_bondlength);
+    let lattice_model = load_model(extension, &model_content)
+        .map_err(|_| FormSubmitError::InvalidFileFormat(FormatError::ExtensionNotAcceptable))?;
+    let filtered_atoms = filtered_atoms(&lattice_model, x_min, x_max, y_min, y_max, z_min, z_max);
+    let results = checker
+        .mount_search(lattice_model.atoms(), &filtered_atoms)
+        .report_spheres();
     let param_form = ParamForm {
         element_symbol: element_symbol.clone(),
         target_bondlength,
@@ -69,7 +66,7 @@ pub async fn accept_form(
         z_min,
         z_max,
     };
-    let results = search_with_task_table(&task_table);
+
     let result_filename = format!(
         "{}_{}_{}",
         file_path.file_stem().unwrap().to_str().unwrap(),
@@ -104,7 +101,7 @@ fn validate_filename(field: FieldMetadata) -> Result<String, FormSubmitError> {
     field.file_name.ok_or(FormSubmitError::NoFileName)
 }
 /// Check the file extension; if the extension is not in the supported list `ACCEPT_EXTENSIONS`, return err;
-fn validate_extension(file_path: &Path) -> Result<(), FormSubmitError> {
+fn validate_extension(file_path: &Path) -> Result<&str, FormSubmitError> {
     let file_extension = file_path
         .extension()
         .ok_or(FormSubmitError::InvalidFileFormat(
@@ -113,10 +110,10 @@ fn validate_extension(file_path: &Path) -> Result<(), FormSubmitError> {
         .to_str()
         .unwrap_or("n/a"); // Fallback when the `OsStr` is not valid Unicode.
     if !ACCEPT_EXTENSIONS.contains(&file_extension) {
-        return Err(FormSubmitError::InvalidFileFormat(
+        Err(FormSubmitError::InvalidFileFormat(
             FormatError::ExtensionNotAcceptable,
-        ));
+        ))
     } else {
-        return Ok(());
+        Ok(file_extension)
     }
 }

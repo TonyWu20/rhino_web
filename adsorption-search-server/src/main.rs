@@ -33,13 +33,13 @@ async fn main() {
 
     let app: Router<()> = Router::new()
         .route("/", get(root_page))
+        .nest("/form_error", form_error_router())
         .nest_service("/assets", ServeDir::new("assets"))
         .nest_service("/tempData", ServeDir::new("tempData"))
         .route("/submit_form", post(accept_form))
         .route("/download_file/:filename", get(download_result))
         .route("/my_wasm.js", get(load_js_wasm))
         .route("/new_style.css", get(css_sheet))
-        .nest("/form_error", form_error_router())
         .layer(RequestBodyLimitLayer::new(
             20 * 1024 * 1024, // 20mb
         ))
