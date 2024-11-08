@@ -23,7 +23,7 @@ fn parameter_form(form_builder: &mut FormBuilder) -> &mut FormBuilder {
         .paragraph(|para| {
             para.label(|l| {
                 l.for_("Upload model file")
-                    .text("Upload model file. (Supports: .cell, .msi, .cif)")
+                    .text("Upload model file. (Supports: .cell)")
             })
         })
         .input(|i| {
