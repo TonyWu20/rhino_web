@@ -80,7 +80,7 @@ pub fn create_task_table(
 /// A page to show successful submission of the form.
 pub async fn accept_form(
     TypedMultipart(FormData {
-        file,
+        mut file,
         element_symbol,
         target_bondlength,
         x_min,
