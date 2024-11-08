@@ -14,12 +14,12 @@ pub async fn download_result(
         (header::CONTENT_TYPE, "application/zip"),
         (
             header::CONTENT_DISPOSITION,
-            "attachment; filename=\"results.zip\"",
+            &format!("attachment; filename=\"{}\"", &filename),
         ),
     ];
-    let mut zip_path = Path::new("tempData").join(&filename);
+    let mut zip_path = Path::new("tempData").join(filename);
     zip_path.set_extension("zip");
+    dbg!(&zip_path);
     let body = Body::from(fs::read(&zip_path).unwrap());
-    fs::remove_file(zip_path).unwrap();
     Ok((headers, body).into_response())
 }

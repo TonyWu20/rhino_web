@@ -1,6 +1,4 @@
 #![recursion_limit = "512"]
-use std::net::SocketAddr;
-
 use adsorption_search_ui::{css_styles::build_css_sheet, html_pages::root_page::build_root_page};
 use axum::{
     http::StatusCode,
@@ -9,13 +7,15 @@ use axum::{
     Router,
 };
 use form_handler::accept_form;
+use std::{fs, net::SocketAddr, path::Path};
+use tokio::signal;
 use tower_http::{
     compression::CompressionLayer,
     limit::RequestBodyLimitLayer,
     services::ServeDir,
     trace::{self, TraceLayer},
 };
-use tracing::Level;
+use tracing::{error, info, Level};
 
 use crate::form_handler::{download_result, error_handle::form_error_router};
 
@@ -30,7 +30,15 @@ async fn main() {
     // A closure or a function can be used as handler.
 
     tracing_subscriber::fmt().with_target(true).compact().init();
-
+    let temp_data_path = Path::new("tempData");
+    if !temp_data_path.exists() {
+        fs::create_dir(temp_data_path).unwrap();
+    }
+    let assets_path = Path::new("assets");
+    if !assets_path.exists() {
+        error!("Run this program in the directory with the provided `assets` folder included.");
+        panic!("Run this program in the directory with the provided `assets` folder included.")
+    }
     let app: Router<()> = Router::new()
         .route("/", get(root_page))
         .nest("/form_error", form_error_router())
@@ -57,13 +65,19 @@ async fn main() {
         );
 
     // let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 10000));
     // let addr = SocketAddr::from(([192, 168, 1, 106], 3000));
-    let addr = SocketAddr::from(([10, 147, 17, 25], 3000));
+    // let addr = SocketAddr::from(([10, 147, 17, 25], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
-    tracing::info!("listening on {}", addr);
+    info!("listening on {}", addr);
+    info!(
+        "Please enter the address in your browser to access: {}",
+        addr
+    );
 
     // Use `hyper::server::Server` which is re-exported through `axum::Server` to serve the app.
     axum::serve(listener, app.into_make_service())
+        // .with_graceful_shutdown(shutdown_signal())
         .await
         .unwrap();
 }
@@ -87,4 +101,28 @@ async fn load_js_wasm() -> impl IntoResponse {
         .header("Content-Type", "text/javascript")
         .body(include_str!("../../assets/my_wasm.js").to_string())
         .unwrap()
+}
+
+async fn shutdown_signal() {
+    let ctrl_c = async {
+        signal::ctrl_c()
+            .await
+            .expect("failed to install Ctrl+C handler");
+    };
+
+    #[cfg(unix)]
+    let terminate = async {
+        signal::unix::signal(signal::unix::SignalKind::terminate())
+            .expect("failed to install signal handler")
+            .recv()
+            .await;
+    };
+
+    #[cfg(not(unix))]
+    let terminate = std::future::pending::<()>();
+
+    tokio::select! {
+        _ = ctrl_c => {},
+        _ = terminate => {},
+    }
 }

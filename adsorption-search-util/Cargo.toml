@@ -11,4 +11,5 @@ edition = "2021"
 chemrust-core = {path = "../../chemrust/chemrust-core"}
 chemrust-parser = {path = "../../chemrust/chemrust-parser"}
 chemrust-scanner = {path="../../chemrust/chemrust-scanner"}
-castep-periodic-table = "0.3"
+castep-periodic-table = "0.5"
+rhino = {path = "../../chemrust-nasl/chemrust-nasl-app"}

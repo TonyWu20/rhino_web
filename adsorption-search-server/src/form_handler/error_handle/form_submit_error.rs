@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use adsorption_search_ui::html_pages::upload_response_page::{
     build_error_format_page, build_error_symbol_page, build_form_error_general_page,
 };
@@ -14,12 +16,40 @@ pub enum FormSubmitError {
     NoFileName,
     InvalidFileFormat(FormatError),
     ParseFileError(FileError),
+    ZipFileError,
+    Execution,
 }
+
+impl Display for FormSubmitError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            FormSubmitError::FormDataNotCollected => {
+                f.write_str("Form data is not collected properly.")
+            }
+            FormSubmitError::InvalidSymbol(s) => write!(f, "Element symbol {} is not valid.", s),
+            FormSubmitError::NoFileName => f.write_str("No filename is given."),
+            FormSubmitError::InvalidFileFormat(error) => write!(f, "{}", error),
+            FormSubmitError::ParseFileError(p) => write!(f, "{:?}", p),
+            FormSubmitError::ZipFileError => f.write_str("Error during preparing the zip file."),
+            FormSubmitError::Execution => f.write_str("Error during Rhino execution."),
+        }
+    }
+}
+impl std::error::Error for FormSubmitError {}
 
 #[derive(Debug)]
 pub enum FormatError {
     ExtensionNotFound,
     ExtensionNotAcceptable,
+}
+
+impl Display for FormatError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            FormatError::ExtensionNotFound => f.write_str("The extension is not found."),
+            FormatError::ExtensionNotAcceptable => f.write_str("The extension is not acceptable."),
+        }
+    }
 }
 
 #[derive(Debug)]
@@ -42,6 +72,8 @@ impl IntoResponse for FormSubmitError {
             }
             Self::NoFileName => Redirect::to("/form_error/no_file_name").into_response(),
             Self::ParseFileError(_) => Redirect::to("/form_error/parse_error").into_response(),
+            Self::Execution => Redirect::to("/form_error/execution_error").into_response(),
+            Self::ZipFileError => Redirect::to("/form_error/execution_error").into_response(),
         }
     }
 }
@@ -64,6 +96,7 @@ pub fn form_error_router() -> Router {
         .route("/no_file_name", get(no_file_name_error))
         .route("/parse_error", get(parse_error))
         .route("/not_string_content", get(not_string_content))
+        .route("/execution_error", get(execution_error))
 }
 
 async fn format_error_page() -> impl IntoResponse {
@@ -95,6 +128,26 @@ async fn parse_error() -> impl IntoResponse {
         build_form_error_general_page(
             "Error: Failed to parse file".into(),
             "Please check if the file content matches the requirement of the file format.".into(),
+        )
+        .to_string(),
+    )
+}
+
+async fn execution_error() -> impl IntoResponse {
+    Html(
+        build_form_error_general_page(
+            "Error: Failed to complete the search".into(),
+            "Rhino failed to complete the search or export results.".into(),
+        )
+        .to_string(),
+    )
+}
+
+async fn zip_error() -> impl IntoResponse {
+    Html(
+        build_form_error_general_page(
+            "Error: Failed to compress results into zip".into(),
+            "Result files were not compressed successfully. Please check /tempData".into(),
         )
         .to_string(),
     )

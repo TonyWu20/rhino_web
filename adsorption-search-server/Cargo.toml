@@ -21,11 +21,14 @@ serde = {version="1.0", features=["derive"]}
 html = "0.6.3"
 axum_typed_multipart = "0.11.1"
 tempfile = "3.10.1"
-adsorption-search-util = {path = "../adsorption-search-util"}
+# adsorption-search-util = {path = "../adsorption-search-util"}
 adsorption-search-ui = { path = "../adsorption-search-ui"}
-castep-periodic-table = "0.3"
+castep-periodic-table = "0.5"
 http-body-util = "0.1.1"
 tracing = "0.1"
 tracing-subscriber = "0.3"
-zip = "1.1.1"
+zip = {version="2.2.0", features=["deflate-flate2"]}
 chrono = "0.4.38"
+rhino = {path ="../../chemrust-nasl/chemrust-nasl-app"}
+walkdir = "2.5.0"
+open = "5.3.0"
