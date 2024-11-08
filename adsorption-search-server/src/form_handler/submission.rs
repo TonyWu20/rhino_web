@@ -24,7 +24,7 @@ use walkdir::{DirEntry, WalkDir};
 /// 2. A function to call the `chemrust-nasl` by passing in the config
 pub fn create_task_table(
     TypedMultipart(FormData {
-        file,
+        mut file,
         element_symbol,
         target_bondlength,
         x_min,
@@ -52,9 +52,14 @@ pub fn create_task_table(
     let temp_dir = Path::new("tempData");
     let export_dir = temp_dir.join(result_id);
     let temp_model_path = temp_dir.join(&file_name);
-    file.contents
-        .persist(&temp_model_path)
-        .map_err(|_| FormSubmitError::FormDataNotCollected)?;
+    // file.contents
+    //     .persist(&temp_model_path)
+    //     .map_err(|_| FormSubmitError::FormDataNotCollected)?;
+    let mut temp_file = File::create_new(temp_model_path.clone()).unwrap();
+    let mut buf = vec![];
+    file.contents.read_to_end(&mut buf).unwrap();
+    temp_file.write_all(&buf).unwrap();
+
     let task_table = rhino_lib::TaskTable::new(
         temp_model_path.to_string_lossy().to_string(),
         symbol,
