@@ -64,8 +64,8 @@ async fn main() {
                 .on_response(trace::DefaultOnResponse::new().level(Level::INFO)),
         );
 
-    // let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    let addr = SocketAddr::from(([0, 0, 0, 0], 10000));
+    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    // let addr = SocketAddr::from(([0, 0, 0, 0], 10000));
     // let addr = SocketAddr::from(([192, 168, 1, 106], 3000));
     // let addr = SocketAddr::from(([10, 147, 17, 25], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
