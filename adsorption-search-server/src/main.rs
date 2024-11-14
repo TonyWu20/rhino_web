@@ -6,7 +6,7 @@ use axum::{
     routing::{get, post},
     Router,
 };
-use form_handler::accept_form;
+use form_handler::{accept_form, download_result, error_handle::form_error_router};
 use std::{fs, net::SocketAddr, path::Path};
 use tower_http::{
     compression::CompressionLayer,
@@ -15,8 +15,6 @@ use tower_http::{
     trace::{self, TraceLayer},
 };
 use tracing::{error, info, Level};
-
-use crate::form_handler::{download_result, error_handle::form_error_router};
 
 mod form_handler;
 mod model_search_run;
