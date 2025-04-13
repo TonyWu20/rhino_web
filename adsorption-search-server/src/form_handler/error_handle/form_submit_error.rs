@@ -58,7 +58,7 @@ pub enum FileError {
     ParseFail,
 }
 
-pub const ACCEPT_EXTENSIONS: [&str; 3] = ["cif", "msi", "cell"];
+pub const ACCEPT_EXTENSIONS: [&str; 2] = ["cif", "cell"];
 
 impl IntoResponse for FormSubmitError {
     fn into_response(self) -> Response {
