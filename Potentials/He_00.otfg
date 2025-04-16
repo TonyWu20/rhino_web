@@ -1,0 +1,31 @@
+CHARGE = 2                  number of valence electrons
+COARSE = 14.7               coarse energy cutoff (Ha)
+MEDIUM = 16.5               medium energy cutoff (Ha)
+FINE =   20.0               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 0.8           core radius (a.u.)
+BETA_RADIUS = 0.8           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 0.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 1          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0      delta E0
+    He FCC  
+400 -78.26523976    0.320373038
+450 -78.42686938    0.158743422
+500 -78.51115646    0.074456345
+600 -78.57311034    0.012502465
+800 -78.5856128     0
+                                
+END_COMMENT
+

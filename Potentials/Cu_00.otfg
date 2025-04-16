@@ -1,0 +1,91 @@
+CHARGE = 11                 number of valence electrons
+COARSE = 9.2                coarse energy cutoff (Ha)
+MEDIUM = 12.9               medium energy cutoff (Ha)
+FINE = 14.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.15          beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 0                L quantum number
+CONFIG_OCC : 0.5            Occupancy of the state
+CONFIG_BLOCK_END
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 1                L quantum number
+CONFIG_OCC : 0.001          Occupancy of the state
+CONFIG_BLOCK_END
+TEST_CONFIG_BLOCK_START     Description of the atomic configuration for the generation (one block per channel)
+TEST_CONFIG_N : 4           N quantum number
+TEST_CONFIG_L : 0           L quantum number
+TEST_CONFIG_OCC : 0.5       Occupancy of the state
+TEST_CONFIG_BLOCK_END
+TEST_CONFIG_BLOCK_START     Description of the atomic configuration for the generation (one block per channel)
+TEST_CONFIG_N : 4           N quantum number
+TEST_CONFIG_L : 1           L quantum number
+TEST_CONFIG_OCC : 0.001     Occupancy of the state
+TEST_CONFIG_BLOCK_END
+
+START_COMMENT
+
+This file is introduced in Materials Studio 4.4 release; the file that was available prior
+to this release has been renamed as Cu_01.otfg. The reason for the change is that the previous
+version of the file had a ghost state in the conduction band and was not suitable for
+calculation of optical or ELNES spectra. 
+
+Convergence testing
+===================
+Settings:   MP grid: 12x12x12, Grid: Precise, xc-functional: PBE
+
+Ecut    E0      delta E0    a       delta a %
+    Cu          
+250 -1476.091812    0.460297115 2.66079     4.101
+270 -1476.366628    0.185481332 2.604936    1.915
+300 -1476.511151    0.040957649 2.579025    0.902
+340 -1476.548299    0.003810412 2.568919    0.506
+370 -1476.551337    0.000772189 2.567389    0.446
+400 -1476.551562    0.000546877 2.566965    0.430
+449 -1476.551695    0.000414119 2.567013    0.432
+500 -1476.551766    0.000343067 2.56708     0.434
+800 -1476.552109    0           2.567097    0.435
+exp                 2.555979    
+
+Structure validation
+====================
+
+Ecut     a       delta a %
+    CuCl            
+440   3.830456  -1.328
+exp   3.882016  
+                                            
+Ecut     a       delta a %   
+    CuPd            
+440     3.011583    0.789   
+exp     2.988       
+
+Lattice parameters test of crystalline ThCu2 (PBESOL)
+===========================================================
+| ThCu2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b   |   4.315  (-1.6%)  |   4.308 (-1.8%)   |  4.387  |
+|  c    |   3.444  (-0.8%)  |   3.465 (-0.2%)   |  3.472  |
+===========================================================
+
+END_COMMENT
+

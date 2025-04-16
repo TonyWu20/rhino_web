@@ -1,0 +1,78 @@
+CHARGE = 5                  number of valence electrons
+COARSE = 7.0                coarse energy cutoff (Ha)
+MEDIUM = 9.2                medium energy cutoff (Ha)
+FINE = 11.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.1           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.54 && VAL=0.25 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.175 && VAL=0.25 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %       c   delta c %
+    Bi                  
+190 -1493.453589    0.632755839 4.63808     2.027   12.37444    4.314
+210 -1493.77883     0.307514348 4.624544    1.729   12.227151   3.072
+230 -1493.93195     0.154394836 4.60893     1.386   12.12713    2.229
+250 -1494.000216    0.086128157 4.595663    1.094   12.036582   1.466
+270 -1494.032236    0.054109047 4.589635    0.962   12.028869   1.401
+300 -1494.057576    0.028768128 4.588424    0.935   11.979979   0.988
+330 -1494.067227    0.019117181 4.588303    0.932   11.952896   0.760
+360 -1494.071418    0.014926814 4.584027    0.838   11.956098   0.787
+400 -1494.073117    0.013227144 4.585206    0.864   11.948198   0.720
+500 -1494.077644    0.008700473 4.584047    0.839   11.952872   0.760
+800 -1494.086345    0           4.582826    0.812   11.939676   0.649
+exp                             4.545925            11.862729   
+
+Structure validation
+====================
+Ecut        a       delta a %       
+    Bi2O3               
+610     5.606305    1.472       
+exp     5.525           
+                    
+Ecut        a       delta a % c delta c %
+    BiIn                
+360     4.993823    0.439   4.94158 2.310
+exp     4.972               4.83    
+                    
+Ecut        a       delta a %       
+    PtBi2               
+330     6.853376    2.427       
+exp     6.691           
+                    
+Ecut        a       delta a %   c   delta c %
+    BiOF                
+610     3.824772    2.078   6.266134    0.645
+exp     3.7469              6.226       
+    
+Ecut        a       delta a %
+    LaBi        
+610     4.710441    1.394
+exp     4.645692    
+                                
+Lattice parameters test of crystalline NdBi (PBESOL)
+===========================================================
+| NdBi  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.481  (0.9%)   |   6.573 (2.3%)    |  6.424  |
+===========================================================
+
+END_COMMENT
+

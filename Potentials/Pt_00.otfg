@@ -1,0 +1,85 @@
+CHARGE = 10                 number of valence electrons
+COARSE = 8.4                coarse energy cutoff (Ha)
+MEDIUM = 9.2                medium energy cutoff (Ha)
+FINE = 10.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+BETA_RADIUS = 2.4           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.22   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.235 && VAL=0.0   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+CORE_HOLE_INFO:
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+BETA_RADIUS = 2.4           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %
+    Pt          
+200 -1399.69591     1.956658002 not converged   
+230 -1401.182256    0.470312648 2.888889    4.119
+250 -1401.476126    0.176442333 2.842102    2.432
+270 -1401.590627    0.061941015 2.840422    2.372
+330 -1401.650781    0.001787052 2.830071    1.999
+400 -1401.650781    0.001787052 2.829911    1.993
+500 -1401.652102    0.000466691 2.829835    1.990
+800 -1401.652568    0           2.8298      1.989
+exp                             2.774616    
+
+Structure validation
+====================
+Ecut        a       delta a %
+    PtSb2       
+330     6.553354    1.950
+exp     6.428   
+                    
+Ecut        a       delta a %
+    PtBi2       
+330     6.853376    2.427
+exp     6.691   
+
+Ecut        a       delta a %   c   delta c %
+    PtSn                
+360     4.160461    1.400   5.561953    2.468
+exp     4.103               5.428   
+                    
+Ecut        a       delta a %   c   delta c %
+    PtSb                
+330     4.227855    2.369   5.575953    1.900
+exp     4.13                5.472   
+
+Ecut        a       delta a %   c   delta c %
+    PtS             
+330     3.553439    2.110   6.151628    0.681
+exp     3.48                6.11    
+    
+END_COMMENT
+

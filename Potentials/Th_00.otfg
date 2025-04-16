@@ -1,0 +1,179 @@
+CHARGE = 12                 number of valence electrons
+COARSE = 8.0                coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 14.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.1           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = PSEUDIZE_ONLY  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 5                N quantum number
+CONFIG_L : 3                L quantum number
+CONFIG_OCC : 0.5            Occupancy of the state
+CONFIG_BLOCK_END
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 6                N quantum number
+CONFIG_L : 2                L quantum number
+CONFIG_OCC : 1.0            Occupancy of the state
+CONFIG_BLOCK_END
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.5             Qc value (used only by qc, qb, and es schemes)
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.2           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = PSEUDIZE_ONLY  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: fcc Th
+Ecut       Energy      		Energy Diff       	a            % a       
+200	-1.78951739E+003	0.80544000	5.11796100	3.65241804
+300	-1.79011206E+003	0.21077000	4.95185177	0.28826126
+400	-1.79030386E+003	0.01897000	4.94211019	0.09096829
+500	-1.79032146E+003	0.00137000	4.93782226	0.00412615
+600	-1.79032246E+003	3.700000e-004	4.93761872	3.929336e-006
+700	-1.79032268E+003	1.500000e-004	4.93763093	2.512882e-004
+800	-1.79032276E+003	7.000000e-005	4.93762474	1.259153e-004
+900	-1.79032280E+003	3.000000e-005	4.93761643	-4.238043e-005
+1000	-1.79032283E+003	0		4.93761853	0
+exp						5.0842
+
+Lattice parameters test of crystalline Th (PBESOL)
+===========================================================
+| Th    |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.937  (-2.9%)  |   4.998 (-1.7%)   |  5.0842 |
+===========================================================
+
+Lattice parameters test of crystalline ThN (PBESOL)
+===========================================================
+| ThN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.114  (-1.0%)  |   5.119 (-0.9%)   |  5.167  |
+===========================================================
+
+Lattice parameters test of crystalline ThO2 (PBESOL)
+===========================================================
+| ThO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.552  (-0.7%)  |   5.555 (-0.7%)   |  5.592  |
+===========================================================
+
+Lattice parameters test of crystalline ThCu2 (PBESOL)
+===========================================================
+| ThCu2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b   |   4.315  (-1.6%)  |   4.308 (-1.8%)   |  4.387  |
+|  c    |   3.444  (-0.8%)  |   3.465 (-0.2%)   |  3.472  |
+===========================================================
+
+Lattice parameters test of crystalline ThSi2 (PBESOL)
+===========================================================
+| ThSi2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b   |   4.095  (-1.0%)  |   4.131 (-0.1%)   |  4.136  |
+|  c    |   4.087  (-0.9%)  |   4.079 (-1.1%)   |  4.126  |
+===========================================================
+
+Lattice parameters test of crystalline ThC (PBESOL)
+===========================================================
+| ThC   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.285  (-1.1%)  |   5.283 (-1.2%)   |  5.346  |
+===========================================================
+
+Lattice parameters test of crystalline ThO (PBESOL)
+===========================================================
+| ThO   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.640  (-0.7%)  |   5.641 (-0.7%)   |  5.682  |
+===========================================================
+
+Lattice parameters test of crystalline ThP (PBESOL)
+===========================================================
+| ThP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.789  (-0.9%)  |   5.788 (-0.9%)   |  5.84   |
+===========================================================
+
+Lattice parameters test of crystalline ThS (PBESOL)
+===========================================================
+| ThS   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.640  (-0.7%)  |   5.641 (-0.7%)   |  5.682  |
+===========================================================
+
+Lattice parameters test of crystalline ThAs (PBESOL)
+===========================================================
+| ThAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.932  (-0.8%)  |   5.933 (-0.8%)   |  5.978  |
+===========================================================
+
+Lattice parameters test of crystalline ThSe (PBESOL)
+===========================================================
+| ThSe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.855  (-0.3%)  |   5.835 (-0.7%)   |  5.875  |
+===========================================================
+
+Lattice parameters test of crystalline ThSb (PBESOL)
+===========================================================
+| ThSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.281  (-0.6%)  |   6.283 (-0.6%)   |  6.318  |
+===========================================================
+
+
+END_COMMENT
+

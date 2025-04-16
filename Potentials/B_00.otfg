@@ -1,0 +1,72 @@
+CHARGE = 3                  number of valence electrons
+COARSE = 9.187              coarse energy cutoff (Ha)
+MEDIUM = 11.025             medium energy cutoff (Ha)
+FINE = 13.965               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+Ecut    E0          delta E0    a   delta a %   b   delta b %   c   delta c %
+    Re3B                            
+420 -13671.34742    0.0095072   2.898936    0.309   9.385096    0.774   7.337136    1.090
+800 -13671.35692    0           2.899012    0.312   9.38399     0.762   7.337738    1.099
+exp                             2.89                9.313               7.258   
+
+Ecut        a   delta a %
+    YB6     
+420     4.092887    -0.489
+exp     4.113
+    
+Ecut        a   delta a %   c   delta c %
+    Cr2B                
+440     5.139386    -0.880  4.28351 -0.753
+exp     5.185               4.316   
+
+Ecut        a   delta a %   b   delta b %   c   delta c %
+    CrB                     
+440     2.925568    -1.463  7.84676 -0.143  2.916615    -0.525
+exp     2.969               7.858           2.932   
+
+Ecut        a   delta a %   c   delta c %   alpha   delta alpha %   gamma   delta gamma %
+    MnB4                                
+300     3.827215    -0.420  2.928144    -0.697  112.49074   -0.238  88.63675    0.079
+exp     3.843355            2.9487              112.75939           88.56634    
+    
+Ecut        a       delta a %   c   delta c %
+    Co2B                
+420     5.012698    0.134   4.262494    1.199
+exp     5.006               4.212
+
+Ecut        a       delta a %   c   delta c %       
+    WB                      
+390     3.134991    0.642   17.056463   0.747       
+exp     3.115               16.93           
+                                
+Ecut        a       delta a %   c   delta c %
+    DyB2                
+650     3.253011    -1.034  3.852328    0.191
+exp     3.287               3.845   
+
+Lattice parameters test of crystalline ErB6 (PBESOL)
+===========================================================
+| ErB6  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.094  (-0.2%)  |   4.091 (-0.3%)   |  4.102  |
+===========================================================
+                        
+END_COMMENT
+

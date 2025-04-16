@@ -1,0 +1,61 @@
+CHARGE = 3                  number of valence electrons
+COARSE = 3.675              coarse energy cutoff (Ha)
+MEDIUM = 5.512              medium energy cutoff (Ha)
+FINE =   7.717              fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = LOCAL && USP_PROJ_ONLY && USP_PROJ_ONLY Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid: 7x7x7, Grid: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0    a   delta a %
+AlSb            
+110 -719.353687     1.788913807 no cell optimization    
+170 -720.7759972    0.366603531 4.414646    1.756
+190 -720.9390181    0.203582663 4.410402    1.658
+220 -721.0709669    0.071633851 4.408081    1.605
+240 -721.1087076    0.033893123 4.403986    1.510
+300 -721.135728     0.006872792 4.400393    1.428
+400 -721.1413093    0.001291434 4.399661    1.411
+600 -721.1426008    0           4.399247    1.401
+exp                             4.338454
+        
+Structure validation
+====================
+Ecut        a   delta a %   c   delta c %
+    IrAl3               
+360     4.291869    1.080   7.781447    0.328
+exp     4.246               7.756       
+
+Lattice parameters test of crystalline NdAl (PBESOL)
+===========================================================
+| NdAl  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   3.680  (-1.3%)  |   3.751 (0.6%)    |  3.73   |
+===========================================================
+
+Lattice parameters test of crystalline NpAl3 (PBESOL)
+===========================================================
+| NpAl3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.220  (-0.9%)  |   4.281 (0.5%)    |  4.260  |
+===========================================================
+
+END_COMMENT

@@ -1,0 +1,72 @@
+CHARGE = 13                 number of valence electrons
+COARSE = 9.9                coarse energy cutoff (Ha)
+MEDIUM = 11.0               medium energy cutoff (Ha)
+FINE = 12.4                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.335 && VAL=0.25  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.1 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.715 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %
+    GaP         
+250 -2370.040981    0.646648594 3.95056     2.503
+270 -2370.414339    0.273290871 3.924547    1.828
+300 -2370.622668    0.064962259 3.903917    1.293
+340 -2370.677828    0.009801733 3.893769    1.030
+370 -2370.681652    0.00597744  3.891672    0.975
+400 -2370.681973    0.005656684 3.891352    0.967
+500 -2370.68524     0.002390382 3.8916      0.973
+800 -2370.68763     0           3.891526    0.971
+exp                             3.854086    
+
+Structure validation
+====================
+Ecut    E0          delta E0    a       delta a %
+    GaN         
+440 -2421.667641    0.008993277 3.221195    1.232
+800 -2421.676634    0           3.22039     1.207
+exp                             3.181981    
+                
+Ecut    E0          delta E0    a       delta a %
+    GaSb            
+380 -2742.085047    0.008349305 4.391758    1.895
+800 -2742.093396    0           4.391417    1.887
+exp                             4.310099    
+
+Ecut    E0          delta E0    a       delta a %
+    GaAs            
+250 -2974.741625    0.673173133 4.197043    4.995
+270 -2975.13281     0.281988052 4.127254    3.249
+300 -2975.350391    0.064407667 4.094157    2.421
+370 -2975.406716    0.00808244  4.060638    1.582
+400 -2975.407162    0.007636272 4.060142    1.570
+500 -2975.411254    0.003544751 4.060118    1.569
+800 -2975.414798    0           4.060577    1.581
+exp                             3.997381    
+
+END_COMMENT
+

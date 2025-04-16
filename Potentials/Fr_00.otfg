@@ -1,0 +1,49 @@
+CHARGE = 9                  number of valence electrons
+COARSE = 7.4                coarse energy cutoff (Ha)
+MEDIUM = 9.2                medium energy cutoff (Ha)
+FINE =   11.0               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+Tests on Fr2 dimer in a box, compare energy and force
+
+Ecut         Energy     Energy Diff         Fx
+200	-2093.039104	0.244868522	-0.09487
+300	-2093.518489	0.00517598	-0.09451
+400	-2093.52594	0.00145048	-0.09456
+500	-2093.527181	0.000830047	-0.09444
+600	-2093.527907	0.000466864	-0.09458
+700	-2093.52832	0.000260195	-0.09445
+800	-2093.528419	0.000210641	-0.09444
+900	-2093.52855	0.000145316	-0.09487
+1000	-2093.528586	0.000127388	-0.0944
+1100	-2093.528604	0.000118517	-0.09485
+1200	-2093.528718	6.12235E-05	-0.0948
+1300	-2093.528821	9.7355E-06	-0.09446
+1400	-2093.528834	3.1985E-06	-0.09452
+1500	-2093.528841	0	        -0.09458
+
+                                
+END_COMMENT
+

@@ -1,0 +1,89 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 5.880              coarse energy cutoff (Ha)
+MEDIUM = 7.350              medium energy cutoff (Ha)
+FINE =   9.187              fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.7           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = LOCAL && USP_PROJ_ONLY && USP_PROJ_ONLY Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+
+START_COMMENT
+Structure validation
+====================
+
+Ecut        a       delta a %       
+    SrCl2               
+330     4.976718    1.050       
+exp     4.924999            
+                    
+Ecut        a       delta a %
+    TlCl        
+330     3.895473    1.577
+exp     3.835       
+
+Ecut        a       delta a %
+    CsCl        
+280     4.21707     2.282
+exp     4.123           
+
+Ecut        a       delta a %
+    RbCl        
+280     4.731624    2.005
+exp     4.63862 
+        
+Ecut        a       delta a %
+    KCl     
+500     4.490218    1.149
+exp     4.439216    
+        
+Ecut        a       delta a %   c   delta c %
+    PuOCl               
+610     4.002527    -0.236      6.890955    1.457
+exp     4.012                   6.792   
+                    
+Lattice parameters test of crystalline EsCl3 (PBESOL)
+===========================================================
+| EsCl3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   7.245  (-2.1%)  |   7.393 (-0.1%)   |  7.40   |
+|   c   |   4.089  (0.5%)   |   4.046 (-0.6%)   |  4.07   |
+===========================================================
+
+Lattice parameters test of crystalline EsOCl (PBESOL)
+===========================================================
+| EsOCl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.883  (-1.6%)  |   3.891 (-1.4%)   |  3.948  |
+|   c   |   6.600  (-1.5%)  |   6.559 (-2.1%)   |  6.702  |
+===========================================================
+
+Lattice parameters test of crystalline AcOCl (PBESOL)
+===========================================================
+| AcOCl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   4.207  (-0.8%)  |   3.835 (-9.6%)   |  4.24   |
+|   c   |   6.927  (-2.0%)  |   6.433 (-9.0%)   |  7.07   |
+===========================================================
+
+Lattice parameters test of crystalline CfOCl (PBESOL)
+===========================================================
+| CfOCl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.884  (-1.8%)  |   3.917 (-1.0%)   |  3.956  |
+|   c   |   6.665   (0.0%)  |   6.577 (-1.3%)   |  6.662  |
+===========================================================
+
+END_COMMENT
+

@@ -1,0 +1,72 @@
+CHARGE = 9                  number of valence electrons
+COARSE = 11.8               coarse energy cutoff (Ha)
+MEDIUM = 13.6               medium energy cutoff (Ha)
+FINE = 15.3                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.3           core radius (a.u.)
+BETA_RADIUS = 1.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-2.07   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.105  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-1.06 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %
+    NaI         
+300 -1975.221766    1.003623307 4.936555    8.037
+340 -1975.913793    0.311595741 4.708229    3.040
+370 -1976.034112    0.191276782 4.647635    1.714
+400 -1976.056221    0.169168034 4.623975    1.196
+430 -1976.058354    0.167034757 4.613654    0.970
+460 -1976.066682    0.15870676  4.610875    0.909
+500 -1976.095293    0.130095513 4.61301     0.956
+800 -1976.225389    0           4.61831     1.072
+exp                             4.569324    
+
+Structure validation
+====================
+Ecut    E0          delta E0    a   delta a %
+    NaCl            
+460 -1737.405837    0.157481552 4.022948    1.233
+800 -1737.563318    0           4.028122    1.363
+exp                             3.97394 
+
+Ecut    E0          delta E0    a   delta a %
+    NaH         
+460 -1320.385386    0.15997126  3.411698    -1.130
+800 -1320.545357    0           3.417331    -0.966
+exp                             3.450681    
+
+Ecut    E0          delta E0    a   delta a %
+    Na          
+460 -1304.126787    0.158669018 3.6173      -2.650
+800 -1304.285456    0           3.634683    -2.182
+exp                             3.715769    
+
+Ecut    a   delta a %       
+NaTl                
+460 5.425481    2.673       
+exp 5.284209            
+    
+END_COMMENT
+

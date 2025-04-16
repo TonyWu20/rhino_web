@@ -1,0 +1,99 @@
+CHARGE = 19                 number of valence electrons
+COARSE = 12.0                coarse energy cutoff (Ha)
+MEDIUM = 15.0               medium energy cutoff (Ha)
+FINE =   18.0               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.1                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: hcp Tm
+Ecut       Energy      Energy Diff           a            % a              c             % c
+500	-8444.551760	0.045710	3.523181	0.815566	5.611338	0.535348
+600	-8444.640980	0.001100	3.494844	0.004679	5.585195	0.066948
+800	-8444.643180	0.000000	3.494680	0.000000	5.581458	0.000000
+exp                                     3.5372                          5.5619
+
+Lattice parameters test of crystalline TbC2 (PBESOL)
+===========================================================
+| TbC2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   3.618  (-1.6%)  |   3.480 (-5.4%)   |  3.678  |
+===========================================================
+                                
+Lattice parameters test of crystalline TbH2 (PBESOL)
+===========================================================
+| TbH2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.186  (-1.1%)  |   4.956 (-5.5%)   |  5.246  |
+===========================================================
+                                
+Lattice parameters test of crystalline TbN (PBESOL)
+===========================================================
+| TbN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.839  (-1.9%)  |   4.720 (-4.3%)   |  4.933  |
+===========================================================
+
+Lattice parameters test of crystalline TbS (PBESOL)
+===========================================================
+| TbS   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.483  (-0.6%)  |   5.318 (-3.6%)   |  5.516  |
+===========================================================
+
+Lattice parameters test of crystalline TbAs (PBESOL)
+===========================================================
+| TbAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.776  (-0.8%)  |   5.534 (-5.0%)   |  5.824  |
+===========================================================
+                                
+Lattice parameters test of crystalline TbTe (PBESOL)
+===========================================================
+| TbTe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.155  (0.9%)   |   5.975 (-2.1%)   |  6.102  |
+===========================================================
+                                
+Lattice parameters test of crystalline TbSb (PBESOL)
+===========================================================
+| TbSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.164  (-0.3%)  |   5.936 (-4.0%)   |  6.181  |
+===========================================================
+
+Lattice parameters test of crystalline TbO2 (PBESOL)
+===========================================================
+| TbO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.270  (1.0%)   |   5.203 (-0.3%)   |  5.22   |
+===========================================================
+                                
+END_COMMENT
+

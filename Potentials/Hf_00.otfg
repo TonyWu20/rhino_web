@@ -1,0 +1,47 @@
+CHARGE = 4                  number of valence electrons
+COARSE = 6.6                coarse energy cutoff (Ha)
+MEDIUM = 8.5                medium energy cutoff (Ha)
+FINE = 11.3                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.4           core radius (a.u.)
+BETA_RADIUS = 2.4           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.2                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.195 && VAL=1.75  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.105 && VAL=0.0  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+Ecut    E0          delta E0    a       delta a %   c   delta c %
+    Hf                  
+180 -1275.856228    0.700783613 3.170764    -0.746  5.037271    -0.274
+200 -1276.170404    0.386607286 3.152295    -1.324  5.019931    -0.617
+240 -1276.455617    0.10139447  3.161847    -1.025  5.003508    -0.942
+270 -1276.505592    0.051419941 3.158741    -1.122  5.000256    -1.007
+300 -1276.516712    0.040300089 3.156812    -1.183  4.999321    -1.025
+400 -1276.545995    0.011016706 3.154666    -1.250  4.997777    -1.056
+500 -1276.552912    0.004099699 3.154224    -1.264  4.997063    -1.070
+800 -1276.557012    0           3.154054    -1.269  4.996588    -1.079
+exp                             3.1946              5.0511  
+
+Structure validation
+====================
+Ecut        a       delta a %
+    SrHfO3      
+610     4.182008    2.777
+exp     4.069   
+
+END_COMMENT
+

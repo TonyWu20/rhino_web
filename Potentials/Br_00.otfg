@@ -1,0 +1,108 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 5.6                coarse energy cutoff (Ha)
+MEDIUM = 6.6                medium energy cutoff (Ha)
+FINE = 8.8                  fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.74 && VAL=0.25  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.295 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+CORE_HOLE_INFO:
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BETA_RC = 2.1 && 2.1 Core radius for this channel (a.u.) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0    a   delta a %
+    Br          
+120 -1015.068779    0.43409421  2.33387 2.183
+140 -1015.213299    0.289574718 2.2911  0.311
+160 -1015.273532    0.229341151 2.30825 1.062
+180 -1015.430647    0.072226492 2.30921 1.104
+200 -1015.462528    0.040345967 2.30935 1.110
+240 -1015.49471     0.008163096 2.30858 1.076
+270 -1015.499432    0.003441176 2.30854 1.074
+300 -1015.501369    0.001504657 2.308   1.051
+400 -1015.5025      0.000373691 2.30796 1.049
+500 -1015.502781    9.3013E-05  2.30809 1.055
+600 -1015.502874    0           2.30803 1.055
+exp                             2.284   
+
+Structure validation
+====================
+Ecut        a   delta a %
+    TlBr        
+330     4.04972 2.008
+exp     3.97    
+    
+Ecut        a   delta a %
+    LiBr        
+600     3.916781    0.914
+exp     3.881309    
+
+Ecut        a   delta a %
+    CsBr        
+270     4.398253    2.595
+exp     4.287   
+
+Ecut        a   delta a %
+    RbBr        
+270     4.954625    2.141
+exp     4.850753    
+
+Lattice parameters test of crystalline AcOBr (PBESOL)
+===========================================================
+| AcOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   4.275  (0.1%)   |   3.811 (-11%)    |  4.27   |
+|   c   |   7.241  (-2.1%)  |   8.411 (14%)     |  7.40   |
+===========================================================
+
+Lattice parameters test of crystalline BkOBr (PBESOL)
+===========================================================
+| BkOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.851  (-2.5%)  |   3.877  (-1.8%)  |  3.95   |
+|   c   |   8.305   (2.5%)  |   7.433  (-8.2%)  |  8.1    |
+===========================================================
+
+Lattice parameters test of crystalline CfOBr (PBESOL)
+===========================================================
+| CfOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.841  (-1.5%)  |   3.882 (-0.5%)   |  3.90   |
+|   c   |   8.175   (2.2%)  |   7.922 (-1.0%)   |  8.0    |
+===========================================================
+
+END_COMMENT
+

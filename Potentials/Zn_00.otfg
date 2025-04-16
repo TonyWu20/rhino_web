@@ -1,0 +1,63 @@
+CHARGE = 12                 number of valence electrons
+COARSE = 10.8               coarse energy cutoff (Ha)
+MEDIUM = 11.5               medium energy cutoff (Ha)
+FINE = 12.5                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %   c   delta c %
+    Zn                  
+300 -4081.535361    2.503580036 not converged           
+330 -4083.091521    0.947419452 2.736973    2.705   5.086323    2.820
+350 -4083.553268    0.485672386 2.736994    2.705   4.865747    -1.638
+400 -4083.966469    0.072471584 2.7038      1.460   4.772853    -3.516
+440 -4084.027473    0.01146751  2.733705    2.582   4.612626    -6.755
+500 -4084.038485    0.0004556   2.696166    1.173   4.739976    -4.181
+600 -4084.038758    0.00018298  2.730513    2.462   4.607693    -6.855
+800 -4084.038941    0           2.730489    2.461   4.607395    -6.861
+exp                             2.6649              4.9468  
+
+Structure validation
+====================
+Ecut        a       delta a %   c   delta c %
+    ZnO             
+610     3.278138    1.124   5.293141    2.034
+exp     3.2417              5.1876  
+                    
+Ecut        a       delta a %       
+    ZnSe                
+600     4.05064     1.074       
+exp     4.007598            
+
+Ecut        a       delta a %       
+    ZnS             
+600     3.844542    0.512       
+exp     3.824953            
+    
+END_COMMENT
+

@@ -1,0 +1,48 @@
+CHARGE = 3                  number of valence electrons
+COARSE = 11                 coarse energy cutoff (Ha)
+MEDIUM = 13.2               medium energy cutoff (Ha)
+FINE = 15                   fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 1.2           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 1          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+This is a small core potential for Li; introduced in Materials Studio 4.4 release.
+The file previously called Li_00.otfg has been renamed to Li_01.otfg. This new potential
+is more accurate for high pressure studies, and also for NMR calculations.
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %
+    Li          
+250    -199.1789313  0.707091768  4.272754    40.595
+270    -199.4239517  0.46207136   3.528632    16.109
+300    -199.7370441  0.148979031  3.303798     8.711
+400    -199.8778858  0.008137299  2.991214    -1.574
+500    -199.8835798  0.002443278  2.970411    -2.259
+800    -199.8860231        0      2.971094    -2.236
+exp                               3.039056    
+
+Structure validation
+====================
+        a           a exp       delta a %   
+LiF     2.873612    2.841155     1.142        
+LiBr    3.895205    3.881309     0.358        
+LiI     4.256091    4.242641     0.317        
+
+END_COMMENT
+

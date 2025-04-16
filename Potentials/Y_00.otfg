@@ -1,0 +1,66 @@
+CHARGE = 11                 number of valence electrons
+COARSE = 8.5                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE = 11.1                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 2.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %   c   delta c %
+    Y                   
+200 -2113.491496    1.786127105 3.776178    3.596   5.9209      3.323
+230 -2114.765083    0.512540198 3.709613    1.770   5.804679    1.294
+250 -2115.071954    0.205668606 3.674572    0.809   5.747904    0.304
+270 -2115.196816    0.080806702 3.65679     0.321   5.717731    -0.223
+300 -2115.258233    0.019389808 3.651103    0.165   5.706804    -0.414
+330 -2115.27332     0.004302882 3.648508    0.093   5.70275     -0.484
+400 -2115.276763    0.000859479 3.647643    0.070   5.699846    -0.535
+500 -2115.277061    0.000561515 3.647843    0.075   5.701007    -0.515
+800 -2115.277623    0           3.648449    0.092   5.701034    -0.514
+exp                             3.6451              5.7305  
+
+Structure validation
+====================
+Ecut    name    a       a exp       delta a %   
+440     YN  3.468341    3.44856     0.574   
+340     YTe 4.360914    4.309816    1.186
+340     YAs 4.116947    4.09132     0.626
+420     YB6 4.092887    4.113       -0.489
+340     YH2 3.681367    3.676248    0.139   
+    
+Lattice parameters test of crystalline YPo (PBESOL)
+===========================================================
+| YPo   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.245  (-0.1%)  |   6.247 (-0.1%)   |  6.251  |
+===========================================================
+
+END_COMMENT
+

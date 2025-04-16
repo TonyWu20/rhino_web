@@ -1,0 +1,76 @@
+CHARGE = 10                 number of valence electrons
+COARSE = 7.4                coarse energy cutoff (Ha)
+MEDIUM = 9.2                medium energy cutoff (Ha)
+FINE = 11.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.2                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %
+    Sr          
+210 -963.4359559    970.8215622 4.3741      1.660
+230 -963.6108819    970.6466362 4.333155    0.708
+250 -963.6871589    970.5703591 4.302674    0.000
+270 -963.7212334    970.5362847 4.281568    -0.491
+300 -963.7404362    970.5170818 4.272168    -0.709
+330 -963.744584     970.5129341 4.267926    -0.808
+360 -963.7454305    970.5120876 4.266131    -0.849
+400 -963.7456236    970.5118945 4.265823    -0.856
+500 -963.7458017    970.5117164 4.265487    -0.864
+800 -963.7461502    970.5113679 4.266291    -0.846
+exp                             4.302674    
+
+Structure validation
+====================
+Ecut        a       delta a %       
+    SrO             
+610     3.673863    1.279       
+exp     3.627458            
+                    
+Ecut        a       delta a %       
+    SrCl2               
+330     4.976718    1.050       
+exp     4.924999            
+                    
+Ecut        a       delta a %       
+    SrMoO3              
+610     3.991424    0.666       
+exp     3.965           
+                    
+Ecut        a       delta a %   c   delta c %
+    SrAu2Si2                
+400     4.466159    2.200   10.139777   -0.002
+exp     4.37                10.14   
+        
+Ecut        a       delta a %
+    SrHfO3      
+610     4.182008    2.777
+exp     4.069   
+                        
+END_COMMENT
+

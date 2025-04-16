@@ -1,0 +1,120 @@
+CHARGE = 5                  number of valence electrons
+COARSE = 4.0                coarse energy cutoff (Ha)
+MEDIUM = 7.0                medium energy cutoff (Ha)
+FINE = 8.0                  fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.48 && VAL=0.25 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.185 && VAL=0.25 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid: 7x7x7, Grid: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0    a   delta a %
+AlSb            
+110 -719.353687     1.788913807 no cell optimization    
+170 -720.7759972    0.366603531 4.414646    1.756
+190 -720.9390181    0.203582663 4.410402    1.658
+220 -721.0709669    0.071633851 4.408081    1.605
+240 -721.1087076    0.033893123 4.403986    1.510
+300 -721.135728     0.006872792 4.400393    1.428
+400 -721.1413093    0.001291434 4.399661    1.411
+600 -721.1426008    0           4.399247    1.401
+exp                             4.338454
+        
+Structure validation
+====================
+Ecut    E0          delta E0    a       delta a %
+    GaSb            
+380 -2742.085047    0.008349305 4.391758    1.895
+800 -2742.093396    0           4.391417    1.887
+exp                             4.310099    
+
+Ecut    a       delta a %   
+    PtSb2           
+330 6.553354    1.950   
+exp 6.428       
+
+Ecut    a       delta a %   c       delta c %
+    PtSb                
+330 4.227855    2.369       5.575953    1.900
+exp 4.13                    5.472   
+
+Ecut    a       delta a %
+    InSb        
+440 4.689519    2.374
+exp 4.580779    
+
+Lattice parameters test of crystalline HoSb (PBESOL)
+===========================================================
+| HoSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.130   (0.3%)  |   6.182  (0.8%)   |  6.130  |
+===========================================================
+
+Lattice parameters test of crystalline CeSb (PBESOL)
+===========================================================
+| CeSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.237  (-2.5%)  |   6.263 (-2.1%)   |  6.399  |
+===========================================================
+
+Lattice parameters test of crystalline NdSb (PBESOL)
+===========================================================
+| NdSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.358  (0.8%)   |   6.495 (2.9%)    |  6.309  |
+===========================================================
+
+Lattice parameters test of crystalline TbSb (PBESOL)
+===========================================================
+| TbSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.164  (-0.3%)  |   5.936 (-4.0%)   |  6.181  |
+===========================================================
+
+Lattice parameters test of crystalline TmSb (PBESOL)
+===========================================================
+| TmSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.159  (1.2%)   |   6.145 (1.0%)    |  6.083  |
+===========================================================
+
+Lattice parameters test of crystalline CfSb (PBESOL)
+===========================================================
+| CfSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.167  (0.0%)   |   6.144 (-0.4%)   |  6.166  |
+===========================================================
+
+Lattice parameters test of crystalline BkSb (PBESOL)
+===========================================================
+| BkSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.157  (-0.5%)  |   6.195  (0.1%)   |  6.191  |
+===========================================================
+
+Lattice parameters test of crystalline ThSb (PBESOL)
+===========================================================
+| ThSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.281  (-0.6%)  |   6.283 (-0.6%)   |  6.318  |
+===========================================================
+
+END_COMMENT
+

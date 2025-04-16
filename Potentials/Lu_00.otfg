@@ -1,0 +1,65 @@
+CHARGE = 11                 number of valence electrons
+COARSE = 8.0                coarse energy cutoff (Ha)
+MEDIUM = 9.2                medium energy cutoff (Ha)
+FINE = 10.3                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.1           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 2.1                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %       c   delta c %
+    Lu                  
+250 -2385.958332    0.220766729 3.541175    1.032   5.531491    -0.308
+270 -2386.098025    0.081073957 3.525363    0.581   5.509337    -0.708
+300 -2386.16241     0.016688622 3.514675    0.276   5.491391    -1.031
+330 -2386.175663    0.003436328 3.512591    0.217   5.486489    -1.119
+360 -2386.178074    0.00102537  3.511555    0.187   5.484339    -1.158
+400 -2386.178521    0.00057781  3.512093    0.202   5.482954    -1.183
+440 -2386.178648    0.000450893 3.512055    0.201   5.483021    -1.182
+500 -2386.178812    0.000287318 3.51176     0.193   5.483861    -1.167
+800 -2386.179099    0           3.512172    0.205   5.483413    -1.175
+exp                             3.505               5.5486  
+    
+Structure validation
+====================
+Ecut        a       delta a %
+    LuRh        
+360     3.328975    -0.151
+exp     3.334   
+
+Ecut        a       delta a %   c   delta c %
+    LuC2                
+390     3.548014    -0.421      6.030462    1.114
+exp     3.563                   5.964   
+
+Ecut        a       delta a %       
+    LuN             
+440     3.341816    -0.838      
+exp     3.370071            
+    
+END_COMMENT
+

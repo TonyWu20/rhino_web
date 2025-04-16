@@ -1,0 +1,138 @@
+CHARGE = 15                 number of valence electrons
+COARSE = 13.0               coarse energy cutoff (Ha)
+MEDIUM = 15.0               medium energy cutoff (Ha)
+FINE = 17.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.1           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = PSEUDIZE_ONLY  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: tetragonal Np
+
+Cutoff	Energy		Energy Diff	a		b		c		% a	% b	% c
+300	-18508.3386	19.1207		4.918688	7.838437	6.358621	5.7519 63.8637 -3.2172
+400	-18545.8861	0.3470		4.657193	4.802421	6.593587	0.1298	0.3953	0.3591
+500	-18546.5691	0.0055		4.651212	4.783861	6.570701	0.0012	0.0073	0.0108
+600	-18546.5758	0.0021		4.650812	4.783752	6.570418       -0.0074	0.0051	0.0065
+700	-18546.5782	0.0009		4.650695	4.782858	6.570812       -0.0099 -0.0136	0.0125
+800	-18546.5800	0.0000		4.651157	4.783510	6.569991	0.0000	0.0000	0.0000
+exp					4.723		4.887		6.663	
+
+Lattice parameters test of crystalline Np3Sn (PBESOL)
+===========================================================
+| Np3Sn |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.568  (-1.4%)  |   4.646 (0.3%)    |  4.632  |
+===========================================================
+
+Lattice parameters test of crystalline Np3Tl (PBESOL)
+===========================================================
+| Np3Tl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.595  (-2.5%)  |   4.658 (-1.1%)   |  4.712  |
+===========================================================
+
+Lattice parameters test of crystalline NpAl3 (PBESOL)
+===========================================================
+| NpAl3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.220  (-0.9%)  |   4.281 (0.5%)    |  4.260  |
+===========================================================
+
+Lattice parameters test of crystalline NpSn3 (PBESOL)
+===========================================================
+| NpSn3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.569  (-1.3%)  |   4.653 (0.6%)    |  4.627  |
+===========================================================
+
+Lattice parameters test of crystalline NpO2 (PBESOL)
+===========================================================
+| NpO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.349  (-1.6%)  |   5.368 (-1.2%)   |  5.4341 |
+===========================================================
+
+Lattice parameters test of crystalline NpS (PBESOL)
+===========================================================
+| NpS   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.455  (-1.4%)  |   5.559  (0.5%)   |  5.532  |
+===========================================================
+
+Lattice parameters test of crystalline NpN (PBESOL)
+===========================================================
+| NpN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.827  (-1.4%)  |   4.923  (0.5%)   |  4.8968 |
+===========================================================
+
+Lattice parameters test of crystalline NpP (PBESOL)
+===========================================================
+| NpP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.553  (-1.1%)  |   5.633  (0.3%)   |  5.614  |
+===========================================================
+
+Lattice parameters test of crystalline NpTe (PBESOL)
+===========================================================
+| NpTe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.141  (-0.9%)  |   6.239  (0.7%)   |  6.197  |
+===========================================================
+
+Lattice parameters test of crystalline NpSe (PBESOL)
+===========================================================
+| NpSe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.717  (-1.5%)  |   5.788  (-0.3%)  |  5.804  |
+===========================================================
+
+Lattice parameters test of crystalline NpAs (PBESOL)
+===========================================================
+| NpAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.740  (-1.6%)  |   5.825 (-0.2%)   |  5.8338 |
+===========================================================
+
+Lattice parameters test of crystalline NpAs2 (PBESOL)
+===========================================================
+| NpAs2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.906  (-0.6%)  |   3.999 (1.8%)    |  3.930  |
+|   c   |   7.953  (-2.3%)  |   7.878 (-3.2%)   |  8.137  |
+===========================================================
+
+END_COMMENT
+
