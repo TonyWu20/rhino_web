@@ -29,8 +29,8 @@ tracing = "0.1"
 tracing-subscriber = "0.3"
 zip = {version="2.6.1", features=["deflate-flate2"]}
 chrono = "0.4.38"
-rhino = {path = "../../chemrust-nasl/chemrust-nasl-app"}
-chemrust-nasl = {path = "../../chemrust-nasl/chemrust-nasl"}
+rhino = {git = "https://github.com/TonyWu20/chemrust-nasl", branch = "dev"}
+chemrust-nasl = {git = "https://github.com/TonyWu20/chemrust-nasl", branch = "dev"}
 walkdir = "2.5.0"
 open = "5.3.0"
 castep-cell-io = "0.2.17"
