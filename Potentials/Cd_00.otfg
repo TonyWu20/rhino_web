@@ -1,0 +1,91 @@
+CHARGE = 12                 number of valence electrons
+COARSE = 8.7                coarse energy cutoff (Ha)
+MEDIUM = 9.6                medium energy cutoff (Ha)
+FINE = 10.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.2           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= 0.0 && 0.1  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.0             Qc value (used only by qc, qb, and es schemes)
+PSEUDO_Q0 = 4.0             Q0 value (used only by qc, qb, and es schemes)
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+BETA_RADIUS = 2.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.0             Qc value (used only by qc, qb, and es schemes)
+PSEUDO_Q0 = 4.0             Q0 value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %   c   delta c %
+    Cd                  
+230 -2984.251089    3.058653801 not converged           
+250 -2986.105539    1.204203821 not converged           
+270 -2986.872248    0.437495492 3.128023    5.010   5.918093    5.366
+300 -2987.230102    0.079641133 3.061684    2.782   5.723462    1.901
+330 -2987.297438    0.012304801 3.041793    2.115   5.676648    1.067
+360 -2987.304911    0.004832354 3.036819    1.948   5.666355    0.884
+400 -2987.305552    0.004191358 3.036153    1.925   5.664667    0.854
+500 -2987.307085    0.002657884 3.036105    1.924   5.664692    0.854
+800 -2987.309743    0           3.035887    1.916   5.664879    0.858
+exp                             2.9788              5.6167  
+
+Structure validation
+====================
+Ecut        a       delta a %
+    CdS     
+330     4.196035    1.751
+exp     4.123847    
+
+Ecut        a       delta a %
+    CdSe        
+350     4.381296    2.415
+exp     4.277996    
+            
+Ecut        a       delta a %
+    CdTe        
+330     4.684078    2.274
+exp     4.579931    
+            
+Ecut        a       delta a %
+    CdO     
+610     3.384687    1.946
+exp     3.320078    
+            
+Ecut        a       delta a %
+    CdF2        
+610     3.890507    2.116
+exp     3.809891    
+                                        
+END_COMMENT
+

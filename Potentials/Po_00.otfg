@@ -1,0 +1,57 @@
+CHARGE = 6                  number of valence electrons
+COARSE = 7.5                coarse energy cutoff (Ha)
+MEDIUM = 9.2                medium energy cutoff (Ha)
+FINE =   11.0               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: sc Po
+Ecut       Energy               Energy Diff             a            % a       
+300	-1.01908931E+003	0.02335000	3.29284920	0.19169979
+400	-1.01910715E+003	0.00551000	3.28843376	0.05735102
+500	-1.01910859E+003	0.00407000	3.28822122	0.05088383
+600	-1.01910996E+003	0.00270000	3.28801938	0.04474263
+700	-1.01911151E+003	0.00115000	3.28798652	0.04374255
+800	-1.01911178E+003	8.800000e-004	3.28682305	0.00834176
+900	-1.01911234E+003	3.200000e-004	3.28687527	0.00993060
+1000	-1.01911266E+003	0		3.28654890	0
+Exp                                             3.345
+                                
+Lattice parameters test of crystalline Po (PBESOL)
+===========================================================
+| Po    |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   3.289  (-1.7%)  |   3.213 (-3.9%)   |  3.345  |
+===========================================================
+
+Lattice parameters test of crystalline YPo (PBESOL)
+===========================================================
+| YPo   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.245  (-0.1%)  |   6.247 (-0.1%)   |  6.251  |
+===========================================================
+
+Lattice parameters test of crystalline PmPo (PBESOL)
+===========================================================
+| PmPo  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.542   (2.9%)  |   6.570  (3.3%)   |  6.36   |
+===========================================================
+
+END_COMMENT
+

@@ -1,0 +1,65 @@
+CHARGE = 4                  number of valence electrons
+COARSE = 3.675              coarse energy cutoff (Ha)
+MEDIUM = 5.512              medium energy cutoff (Ha)
+FINE =   7.350              fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = LOCAL && USP_PROJ_ONLY && USP_PROJ_ONLY Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+
+START_COMMENT
+
+Structure validation
+====================
+Ecut        a       delta a %
+    Cr3Si       
+440     4.515949    -0.857
+exp     4.555   
+    
+Ecut        a       delta a %
+    MnSi        
+300     4.477995    -1.539
+exp     4.548   
+
+Ecut        a       delta a %   c   delta c %       
+    FeSi2                       
+370     2.678451    -0.207  5.115782    -0.238      
+exp     2.684               5.128           
+                            
+Ecut        a       delta a %       
+    CoSi2               
+300     3.792958    0.076       
+exp     3.790092
+
+Ecut        a       delta a %   b   delta b %   c   delta c %
+    PdSi                        
+420     5.600104    -0.306  3.482844    2.711   6.151565    -0.030
+exp     5.6173              3.3909              6.1534  
+
+Ecut        a       delta a %   b   delta b %   c   delta c %
+    GdSi                        
+440     8.002215    0.366       3.85961 0.042   5.776481    0.408
+exp     7.973                   3.858           5.753
+
+Lattice parameters test of crystalline ThSi2 (PBESOL)
+===========================================================
+| ThSi2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b   |   4.095  (-1.0%)  |   4.131 (-0.1%)   |  4.136  |
+|  c    |   4.087  (-0.9%)  |   4.079 (-1.1%)   |  4.126  |
+===========================================================
+
+END_COMMENT
+

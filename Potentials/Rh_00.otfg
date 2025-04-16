@@ -1,0 +1,66 @@
+CHARGE = 9                  number of valence electrons
+COARSE = 9.0                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE = 11.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.2           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.17   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.225 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %
+    Rh          
+250 -885.9494732    0.373633298 2.765727    2.811
+270 -886.1749352    0.148171324 2.727899    1.404
+300 -886.2906297    0.032476827 2.726946    1.369
+340 -886.3172509    0.005855595 2.724542    1.280
+370 -886.3183121    0.004794428 2.723926    1.257
+400 -886.3186062    0.004500297 2.72387     1.255
+500 -886.3213491    0.001757444 2.723724    1.249
+800 -886.3231065    0           2.723607    1.245
+exp                             2.690117    
+
+Structure validation
+====================
+Ecut    E0          delta E0    a   delta a %   Te z    delta Te z %
+    RhTe2                   
+360 -8517.730968    0.025774404 6.532333        1.443   0.131343    0.800
+800 -8517.756743    0           6.531663        1.433   0.131357    0.811
+exp                             6.4394          0.1303  
+                        
+Ecut        a   delta a %           
+    GdRh                    
+440     3.459176    0.484           
+exp     3.4425              
+                        
+Ecut        a   delta a %           
+    LuRh                    
+360     3.328975    -0.151          
+exp     3.334               
+
+Lattice parameters test of crystalline PaIr3 (PBESOL)
+===========================================================
+| PaIr3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a    |   3.982  (-1.4%)  |   4.030  (-0.2%)  |  4.037  |
+===========================================================
+
+END_COMMENT
+

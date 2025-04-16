@@ -1,0 +1,76 @@
+CHARGE = 5                  number of valence electrons
+COARSE = 3.675              coarse energy cutoff (Ha)
+MEDIUM = 5.512              medium energy cutoff (Ha)
+FINE =   6.982              fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = LOCAL && USP_PROJ_ONLY && USP_PROJ_ONLY Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+
+START_COMMENT
+Structure validation
+====================
+Ecut        a   delta a %       
+    InP             
+440     4.212645    1.514       
+exp     4.149833                        
+                                                        
+Ecut        a       delta a %   b   delta b %   c   delta c %
+    WP                      
+390     6.252637    0.541   5.744061    0.473   3.256642    0.576
+exp     6.219               5.717               3.238
+
+Ecut        a       delta a %
+    SmP     
+440     4.177895    2.577
+exp     4.072935    
+    
+Lattice parameters test of crystalline HoP (PBESOL)
+===========================================================
+| HoP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.585  (-0.7%)  |   5.565 (-1.1%)   |  5.626  |
+===========================================================
+
+Lattice parameters test of crystalline NdP (PBESOL)
+===========================================================
+| NdP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.809  (-0.3%)  |   5.931 (1.8%)    |  5.826  |
+===========================================================
+
+Lattice parameters test of crystalline BkP (PBESOL)
+===========================================================
+| BkP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.554  (-2.0%)  |   5.529 (-2.5%)   |  5.669  |
+===========================================================
+
+Lattice parameters test of crystalline NpP (PBESOL)
+===========================================================
+| NpP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.553  (-1.1%)  |   5.633  (0.3%)   |  5.614  |
+===========================================================
+
+Lattice parameters test of crystalline ThP (PBESOL)
+===========================================================
+| ThP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.789  (-0.9%)  |   5.788 (-0.9%)   |  5.84   |
+===========================================================
+
+END_COMMENT
+

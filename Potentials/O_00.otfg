@@ -1,0 +1,316 @@
+CHARGE = 6                  number of valence electrons
+COARSE = 16.537             coarse energy cutoff (Ha)
+MEDIUM = 18.375             medium energy cutoff (Ha)
+FINE =   20.212             fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.3           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+Ecut        a       delta a %   c   delta c %
+    BeO                                                                         
+500     2.692704    -0.193  4.383767    0.150
+        2.6979              4.3772  
+        
+Ecut    E0          delta E0    a       delta a %
+    CaO         
+610 -1445.064279    0.020450801 3.417233    0.461
+800 -1445.08473     0           3.416228    0.432
+exp                             3.401537    
+                                
+Ecut        a       delta a %
+    SrHfO3      
+610     4.182008    2.777
+exp     4.069   
+
+Ecut        a       delta a %
+    SrMoO3      
+610     3.991424    0.666
+exp     3.965   
+
+Ecut    E0          delta E0    a   delta a %
+    NbO         
+610 -6545.906399    0.058590682 4.226765    0.391
+800 -6545.96499     0           4.226382    0.382
+exp                             4.2103
+
+Ecut    E0          delta E0    a   delta a %   c   delta c %
+    OsO2                    
+610 -6855.384153    0.082958978 4.507072    0.150   3.201466    0.552
+800 -6855.467112    0           4.505706    0.120   3.201435    0.551
+exp                             4.5003              3.1839
+
+Ecut    E0          delta E0    a   delta a %       b   delta b %       c   delta c %
+    ReO2                            
+610 -12505.44124    0.16002699  4.870042    1.261   5.663728    0.362   4.602355    0.036
+800 -12505.60127    0           4.868778    1.235   5.663184    0.352   4.60135     0.014
+exp                             4.8094              5.6433              4.6007      
+                
+Ecut        a       delta a %   c   delta c %           
+    RuO2                            
+610     4.515325    0.542   3.116117    0.293           
+exp     4.491               3.107   
+
+Ecut        a       delta a %   c   delta c %
+    SnO2                
+610     4.857963    2.548   3.256533    2.202
+exp     4.73727             3.186383
+    
+Ecut        a       delta a %   c   delta c %
+    TiO2 anatase                
+610     4.642552    1.057   2.965       0.202
+exp     4.594               2.959
+
+Ecut        a       delta a %
+    ZrO2 cubic      
+610     3.614626    0.826
+exp     3.585031    
+                
+Ecut        a       delta a %   c   delta c %
+    ZnO             
+610     3.278138    1.124   5.293141    2.034
+exp     3.2417              5.1876  
+
+Ecut        a       delta a %   c   delta c %
+    IrO2                
+610     4.526434    0.474   3.176782    0.576
+exp     4.5051              3.1586  
+
+Ecut        a       delta a %
+    MnO spin-polarized      
+610     3.15333     0.330
+exp     3.142948
+
+Ecut        a       delta a %
+    BaO     
+610     3.96773     1.597
+exp     3.905351
+
+Ecut        a       delta a %
+    CdO     
+610     3.384687    1.946
+exp     3.320078    
+            
+Ecut        a       delta a %       
+    SrO             
+610     3.673863    1.279       
+exp     3.627458            
+                    
+Ecut        a       delta a %       
+    SrMoO3              
+610     3.991424    0.666       
+exp     3.965           
+
+Ecut        a       delta a %       
+    Bi2O3               
+610     5.606305    1.472       
+exp     5.525           
+                    
+Ecut        a       delta a %   c   delta c %
+    BiOF                
+610     3.824772    2.078   6.266134    0.645
+exp     3.7469              6.226   
+
+Ecut        a       delta a %
+    SmO     
+610     3.592137    1.839
+exp     3.527261    
+            
+Ecut        a       delta a %
+    PrO2        
+610     3.856504    1.111
+exp     3.814134    
+    
+Ecut        a       delta a %
+    UO2     
+610     3.826677    -1.029
+exp     3.86646 
+            
+Ecut        a       delta a %
+    K2O     
+610     4.561493    0.232
+exp     4.550939    
+
+Ecut        a       delta a %
+    PuO     
+610     3.541377    0.993
+exp     3.506543    
+        
+Ecut        a       delta a %
+    PuO2        
+610     3.818634    0.081
+exp     3.815548    
+        
+Ecut        a       delta a %   c   delta c %
+    PuOCl               
+610     4.002527    -0.236      6.890955    1.457
+exp     4.012                   6.792   
+
+Ecut        a       delta a %
+    CmO2        
+620     3.860137    1.621
+exp     3.798578    
+
+Ecut        a       delta a %
+    AmO     
+610     3.597151    0.735
+exp     3.570889    
+        
+Ecut        a       delta a %
+    AmO2        
+610     3.834931    0.882
+exp     3.801406    
+
+Lattice parameters test of crystalline CeO2 (PBESOL)
+===========================================================
+| CeO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.404  (-0.1%)  |   5.407 (-0.1%)   |  5.412  |
+===========================================================
+
+Lattice parameters test of crystalline TbO2 (PBESOL)
+===========================================================
+| TbO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.270  (1.0%)   |   5.203 (-0.3%)   |  5.22   |
+===========================================================
+
+Lattice parameters test of crystalline ErLaO3 (PBESOL)
+===========================================================
+|ErLaO3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|   a   |   6.014  (-0.9%)  |   6.064 (-0.1%)   |  6.07   |
+|   b   |   5.822  (-0.5%)  |   5.849 (0.0%)    |  5.85   |
+|   c   |   8.434  (-0.2%)  |   8.493 (0.5%)    |  8.45   |
+===========================================================
+
+Lattice parameters test of crystalline EsOCl (PBESOL)
+===========================================================
+| EsOCl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.883  (-1.6%)  |   3.891 (-1.4%)   |  3.948  |
+|   c   |   6.600  (-1.5%)  |   6.559 (-2.1%)   |  6.702  |
+===========================================================
+
+Lattice parameters test of crystalline NpO2 (PBESOL)
+===========================================================
+| NpO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.349  (-1.6%)  |   5.368 (-1.2%)   |  5.4341 |
+===========================================================
+
+Lattice parameters test of crystalline ThO2 (PBESOL)
+===========================================================
+| ThO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.552  (-0.7%)  |   5.555 (-0.7%)   |  5.592  |
+===========================================================
+
+Lattice parameters test of crystalline AcOCl (PBESOL)
+===========================================================
+| AcOCl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   4.207  (-0.8%)  |   3.835 (-9.6%)   |  4.24   |
+|   c   |   6.927  (-2.0%)  |   6.433 (-9.0%)   |  7.07   |
+===========================================================
+
+Lattice parameters test of crystalline AcOBr (PBESOL)
+===========================================================
+| AcOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   4.275  (0.1%)   |   3.811 (-11%)    |  4.27   |
+|   c   |   7.241  (-2.1%)  |   8.411 (14%)     |  7.40   |
+===========================================================
+
+Lattice parameters test of crystalline Cf2O3 (PBESOL)
+===========================================================
+| Cf2O3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.699  (-0.6%)  |   3.682 (-1.0%)   |  3.72   |
+|   c   |   5.735  (-3.8%)  |   5.748 (-3.6%)   |  5.96   |
+===========================================================
+
+Lattice parameters test of crystalline BkO2 (PBESOL)
+===========================================================
+| BkO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.357  (0.5%)   |   5.335  (0.1%)   |  5.3315 |
+===========================================================
+
+Lattice parameters test of crystalline BkOI (PBESOL)
+===========================================================
+| BkOI  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.931  (-1.4%)  |   3.927  (-1.5%)  |  3.986  |
+|   c   |   9.306   (1.7%)  |   9.273  (1.4%)   |  9.149  |
+===========================================================
+
+Lattice parameters test of crystalline BkOBr (PBESOL)
+===========================================================
+| BkOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.851  (-2.5%)  |   3.877  (-1.8%)  |  3.95   |
+|   c   |   8.305   (2.5%)  |   7.433  (-8.2%)  |  8.1    |
+===========================================================
+
+Lattice parameters test of crystalline CfO2 (PBESOL)
+===========================================================
+| CfO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.322   (0.2%)  |   5.282 (-0.5%)   |  5.31   |
+===========================================================
+
+Lattice parameters test of crystalline ThO (PBESOL)
+===========================================================
+| ThO   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.640  (-0.7%)  |   5.641 (-0.7%)   |  5.682  |
+===========================================================
+
+Lattice parameters test of crystalline CfOI (PBESOL)
+===========================================================
+| CfOI  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.925  (-1.1%)  |   3.952 (-0.5%)   |  3.97   |
+|   c   |   9.170   (0.3%)  |   9.017 (-1.3%)   |  9.14   |
+===========================================================
+
+Lattice parameters test of crystalline CfOBr (PBESOL)
+===========================================================
+| CfOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.841  (-1.5%)  |   3.882 (-0.5%)   |  3.90   |
+|   c   |   8.175   (2.2%)  |   7.922 (-1.0%)   |  8.0    |
+===========================================================
+
+Lattice parameters test of crystalline CfOCl (PBESOL)
+===========================================================
+| CfOCl |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.884  (-1.8%)  |   3.917 (-1.0%)   |  3.956  |
+|   c   |   6.665   (0.0%)  |   6.577 (-1.3%)   |  6.662  |
+===========================================================
+
+Lattice parameters test of crystalline TcAgO4 (PBESOL)
+===========================================================
+|   Tc  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   5.266  (-0.7%)  |   5.276 (-0.5%)   |  5.3026 |
+|   c   |  11.415  (-3.3%)  |  11.391 (-3.5%)   |  11.81  |
+===========================================================
+
+END_COMMENT
+

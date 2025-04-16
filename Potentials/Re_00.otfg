@@ -1,0 +1,66 @@
+CHARGE = 15                 number of valence electrons
+COARSE = 9.0                coarse energy cutoff (Ha)
+MEDIUM = 10.7               medium energy cutoff (Ha)
+FINE = 11.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.1           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 2.1                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-3.14   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.225  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-1.735 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.205 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %   c   delta c %
+    Re                  
+240 -4499.306138    1.188115773 2.823723    2.309   4.54833     2.026
+270 -4500.238338    0.255915524 2.781967    0.796   4.483481    0.572
+290 -4500.407136    0.087118101 2.775529    0.563   4.472998    0.336
+320 -4500.479653    0.014600953 2.77431     0.518   4.470246    0.275
+400 -4500.491301    0.002952727 2.773596    0.493   4.468981    0.246
+500 -4500.492588    0.001665362 2.77358     0.492   4.468957    0.246
+800 -4500.494254    0           2.773582    0.492   4.468959    0.246
+exp                             2.76                4.458   
+
+Structure validation
+====================
+Ecut    E0          delta E0    a   delta a %       b   delta b %       c   delta c %
+    ReO2                            
+610 -12505.44124    0.16002699  4.870042    1.261   5.663728    0.362   4.602355    0.036
+800 -12505.60127    0           4.868778    1.235   5.663184    0.352   4.60135     0.014
+exp                             4.8094              5.6433              4.6007  
+
+Ecut    E0          delta E0    a   delta a %       b   delta b %       c   delta c %
+    Re3B                            
+420 -13671.34742    0.0095072   2.898936    0.309   9.385096    0.774   7.337136    1.090
+800 -13671.35692    0           2.899012    0.312   9.38399     0.762   7.337738    1.099
+exp                             2.89                9.313               7.258   
+        
+END_COMMENT
+

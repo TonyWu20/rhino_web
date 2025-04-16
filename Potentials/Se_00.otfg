@@ -1,0 +1,119 @@
+CHARGE = 6                  number of valence electrons
+COARSE = 8.5                coarse energy cutoff (Ha)
+MEDIUM = 10.0               medium energy cutoff (Ha)
+FINE = 11.4                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.6           core radius (a.u.)
+BETA_RADIUS = 1.6           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.3                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.645 && VAL=0.25    Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.245 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.74 && VAL=0.25  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.295 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0
+    Se (32 atoms)   
+200 -15032.64851    0.205041866
+230 -15035.75884    0.107844197
+250 -15037.08336    0.066452927
+270 -15037.91244    0.040544111
+300 -15038.55702    0.020401062
+330 -15038.83555    0.011696952
+400 -15039.04619    0.005114587
+500 -15039.14311    0.002085685
+800 -15039.20985    0
+
+Structure validation
+====================
+Ecut        a       delta a %       
+    ZnSe                
+600     4.05064     1.074       
+exp     4.007598            
+                                    
+Ecut        a       delta a %   c   delta c %
+    Se hexagonal                
+350     4.48617     3.008   5.043685    1.904
+exp     4.35517             4.94945 
+    
+Ecut        a       delta a %
+    BeSe        
+420     3.652503    0.514
+exp     3.633822    
+            
+Ecut        a       delta a %
+    PbSe        
+450     4.390545    1.325
+exp     4.33315 
+            
+Ecut    a           delta a %   
+    PrSe            
+560     4.285104    2.277   
+exp     4.189713        
+
+Ecut        a       delta a %
+    BaSe        
+350     4.726017    1.420
+exp     4.659834    
+                    
+Ecut        a       delta a %
+    YbSe        
+440     4.137277    -1.366
+exp     4.194557    
+
+Lattice parameters test of crystalline NdSe (PBESOL)
+===========================================================
+| NdSe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.949  (2.8%)   |   6.114 (5.6%)    |  5.789  |
+===========================================================
+
+Lattice parameters test of crystalline NpSe (PBESOL)
+===========================================================
+| NpSe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.717  (-1.5%)  |   5.788  (-0.3%)  |  5.804  |
+===========================================================
+
+Lattice parameters test of crystalline ThSe (PBESOL)
+===========================================================
+| ThSe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.855  (-0.3%)  |   5.835 (-0.7%)   |  5.875  |
+===========================================================
+
+
+END_COMMENT
+

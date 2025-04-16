@@ -1,0 +1,77 @@
+CHARGE = 9                  number of valence electrons
+COARSE = 5.9                coarse energy cutoff (Ha)
+MEDIUM = 7.7                medium energy cutoff (Ha)
+FINE = 10.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.5           core radius (a.u.)
+BETA_RADIUS = 2.5           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 0                L quantum number
+CONFIG_OCC : 1.95           Occupancy of the state
+CONFIG_BLOCK_END
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 1                L quantum number
+CONFIG_OCC : 0.05           Occupancy of the state
+CONFIG_BLOCK_END
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 4.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0    a   delta a %
+    Co fcc          
+160 -920.2909793    0.256462717 2.489009    -0.677
+190 -920.5063234    0.041118669 2.455467    -2.016
+210 -920.5358891    0.011552933 2.452894    -2.119
+230 -920.5419945    0.005447568 2.451227    -2.185
+250 -920.5423892    0.005052796 2.45061     -2.210
+270 -920.5427539    0.004688081 2.450551    -2.212
+300 -920.5437116    0.003730455 2.450637    -2.209
+400 -920.5450178    0.002424209 2.450531    -2.213
+500 -920.546121     0.001321034 2.450466    -2.215
+800 -920.547442     0           2.450331    -2.221
+exp                             2.505986    
+
+Structure validation
+====================
+Ecut        a       delta a %       
+    CoSi2               
+300     3.792958    0.076       
+exp     3.790092            
+                    
+Ecut        a       delta a %   c   delta c %
+    Co2B                
+420     5.012698    0.134   4.262494    1.199
+exp     5.006               4.212   
+                    
+Ecut        a       delta a %       
+    FeCo                
+370     2.848791    -0.287      
+exp     2.857           
+
+Ecut        a       delta a %   c   delta c %
+    Co hcp              
+300     2.511823    0.192   4.074445    0.134
+exp     2.507               4.069   
+
+END_COMMENT
+

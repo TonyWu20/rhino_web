@@ -1,0 +1,70 @@
+CHARGE = 11                 number of valence electrons
+COARSE = 9.0                coarse energy cutoff (Ha)
+MEDIUM = 11.0               medium energy cutoff (Ha)
+FINE = 12.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.185 && VAL=0.4 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.3 && VAL=0.0 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+CORE_HOLE_INFO:
+
+
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.0             Qc value (used only by qc, qb, and es schemes)
+PSEUDO_Q0 = 3.75            As Qc, but specifically for l=0 channel
+
+START_COMMENT
+
+Convergence testing and structure validation
+============================================
+Ecut       E0 (eV)  delta E0    a         delta a %
+220 -1248.806623    1.521332233 no cell optimization    
+250 -1249.957425    0.370529443 3.040523    5.244
+270 -1250.201445    0.126509829 2.976953    3.043
+280 -1250.255419    0.072535411 2.962493    2.543
+300 -1250.306939    0.021016207 2.945750    1.963
+350 -1250.326327    0.001627594 2.935702    1.616
+400 -1250.326608    0.001346766 2.935148    1.596
+500 -1250.327109    0.000845959 2.935058    1.593
+800 -1250.327955    0           2.935000    1.591
+exp                             2.889026    
+
+Settings:   MP grid: 11x11x11, Grid: Fine, xc-functional: PBE
+
+Lattice parameters test of crystalline TcAgO4 (PBESOL)
+===========================================================
+|   Tc  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   5.266  (-0.7%)  |   5.276 (-0.5%)   |  5.3026 |
+|   c   |  11.415  (-3.3%)  |  11.391 (-3.5%)   |  11.81  |
+===========================================================
+
+END_COMMENT
+

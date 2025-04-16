@@ -1,0 +1,92 @@
+CHARGE = 22                 number of valence electrons
+COARSE = 12.0               coarse energy cutoff (Ha)
+MEDIUM = 14.0               medium energy cutoff (Ha)
+FINE =   16.0               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.1                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which pseudization scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 5.75            Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: hcp Er
+Ecut               Energy      Energy Diff             a            % a           c               %c
+500.000000	-11334.500300	0.009200	3.527942	-0.187096	5.741580	-0.381966
+600.000000	-11334.507400	0.005650	3.525055	-0.268769	5.754738	-0.153675
+700.000000	-11334.512400	0.003150	3.535099	0.015403	5.764496	0.015633
+800.000000	-11334.511100	0.003800	3.521946	-0.356724	5.770872	0.126251
+900.000000	-11334.517600	0.000550	3.522453	-0.342386	5.768302	0.081674
+1000.000000	-11334.518700	0.000000	3.534555	0.000000	5.763595	0.000000
+exp                                             3.559                           5.592                                
+
+Lattice parameters test of crystalline ErC2 (PBESOL)
+===========================================================
+| ErC2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.624   (0.3%)  |   3.631  (0.8%)   |  3.612  |
+|   c   |   6.137   (0.8%)  |   6.172  (1.4%)   |  6.087  |
+===========================================================
+
+Lattice parameters test of crystalline ErB6 (PBESOL)
+===========================================================
+| ErB6  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.094  (-0.2%)  |   4.091 (-0.3%)   |  4.102  |
+===========================================================
+
+Lattice parameters test of crystalline ErAs (PBESOL)
+===========================================================
+| ErAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.750  (0.3%)   |   5.754 (0.4%)    |  5.732  |
+===========================================================
+
+Lattice parameters test of crystalline ErN (PBESOL)
+===========================================================
+| ErN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.783  (-1.2%)  |   4.788 (-1.1%)   |  4.839  |
+===========================================================
+
+Lattice parameters test of crystalline ErH2 (PBESOL)
+===========================================================
+| ErH2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.174  (1.0%)   |   5.171 (0.9%)    |  5.123  |
+===========================================================
+
+Lattice parameters test of crystalline ErLaO3 (PBESOL)
+===========================================================
+|ErLaO3 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|   a   |   6.014  (-0.9%)  |   6.064 (-0.1%)   |  6.07   |
+|   b   |   5.822  (-0.5%)  |   5.849 (0.0%)    |  5.85   |
+|   c   |   8.434  (-0.2%)  |   8.493 (0.5%)    |  8.45   |
+===========================================================
+
+
+END_COMMENT
+

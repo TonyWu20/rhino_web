@@ -1,0 +1,41 @@
+CHARGE = 8                  number of valence electrons
+COARSE = 11.0               coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 13.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.7           core radius (a.u.)
+BETA_RADIUS = 1.7           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.0                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0      delta E0
+    Ar  
+210 -616.7523846    0.431464638
+240 -617.0517793    0.132069885
+270 -617.1478775    0.035971687
+300 -617.1750862    0.008763007
+400 -617.1819952    0.001854041
+800 -617.1838492    0
+
+Structure validation
+====================
+Ecut    H-Ar    delta % Ar-F    delta %
+    HArF                
+610     1.37475 3.365   1.98954 0.992
+exp     1.33            1.97    
+                    
+END_COMMENT
+

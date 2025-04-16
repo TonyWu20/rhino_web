@@ -1,0 +1,49 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 7.4                coarse energy cutoff (Ha)
+MEDIUM = 8.85               medium energy cutoff (Ha)
+FINE =   10.3               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.7                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+Tests on At2 dimer in a box, compare energy and force
+
+Ecut         Energy     Energy Diff         Fx
+200	-1608.600804200	0.35554314       -0.61685
+300	-1609.297693912	0.00709828       -0.61253
+400	-1609.308569672	0.00166040       -0.62116
+500	-1609.309911106	9.896840e-004    -0.62244
+600	-1609.310804302	5.430860e-004    -0.62277
+700	-1609.311446216	2.221290e-004    -0.62368
+800	-1609.311714022	8.822600e-005    -0.62419
+900	-1609.311844457	2.300850e-005    -0.62429
+1000	-1609.311890474	0                -0.62435
+
+Molecular test for AtN3 (PBESOL)
+==============================================================
+| AtN3     |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+--------------------------------------------------------------
+| At-N     |   2.201  (-2.9%)  |   2.166  (-4.5%)  |  2.267  |
+| N1-N2    |   1.236  (-0.2%)  |   1.261  (1.8%)   |  1.239  |
+| N2-N3    |   1.159  (1.1%)   |   1.191  (3.9%)   |  1.146  |
+| At-N1-N2 |   112.55 (0.9%)   |   112.33 (0.7%)   | 111.60  |
+| N1-N2-N3 |   171.81 (0.0%)   |   171.19 (-0.4%)  | 171.90  |
+==============================================================
+
+
+END_COMMENT
+

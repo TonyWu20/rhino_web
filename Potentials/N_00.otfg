@@ -1,0 +1,176 @@
+CHARGE = 5                  number of valence electrons
+COARSE = 11.025             coarse energy cutoff (Ha)
+MEDIUM = 12.862             medium energy cutoff (Ha)
+FINE =   14.700             fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.5           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+Ecut    E0          delta E0    a       delta a %
+    GaN         
+440 -2421.667641    0.008993277 3.221195    1.232
+800 -2421.676634    0           3.22039     1.207
+exp                             3.181981            
+
+Ecut    E0          delta E0    a       delta a %
+    NbN         
+460 -2015.742318    0.002694124 3.122007    0.482
+800 -2015.745012    0           3.121793    0.475
+exp                             3.107027
+
+Ecut        a       delta a % c delta c %
+    InN             
+440     3.584578    1.460   5.79045 1.712
+exp     3.533               5.693   
+                    
+Ecut        a       delta a % c delta c %
+    TaN             
+440     5.265807    1.343   2.921457    0.359
+exp     5.196               2.911   
+                    
+Ecut        a       delta a %
+    TiN     
+440     3.003691    0.233
+exp     2.996719
+
+Ecut        a       delta a %
+    VN      
+450     2.900929    -0.665
+exp     2.920351
+
+Ecut        a       delta a %
+    ZrN     
+450     3.246773    -0.614
+exp     3.266833    
+
+Ecut        a       delta a %
+    YN      
+440     3.468341    0.574
+exp     3.44856 
+
+Ecut        a       delta a %       
+    CrN             
+440     2.865566    -2.302              
+exp     2.933079    
+            
+Ecut        a       delta a %
+    SmN     
+440     3.600988    0.881
+exp     3.569546    
+
+Ecut        a       delta a %
+    EuN     
+470     3.610726    1.781
+exp     3.547555    
+            
+Ecut        a       delta a %       
+    LuN             
+440     3.341816    -0.838      
+exp     3.370071
+
+Ecut        a       delta a %
+    UN      
+440     3.443792    -1.795
+exp     3.50675     
+        
+Ecut        a       delta a %
+    UN2     
+440     3.728407    -0.701
+exp     3.754737    
+
+Ecut        a       delta a %
+    PuN     
+600     3.51468     1.335
+exp     3.46836 
+
+Ecut        a       delta a %
+    CmN     
+620     3.562795    0.230
+exp     3.554626    
+
+Lattice parameters test of crystalline HoN (PBESOL)
+===========================================================
+| HoN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.789  (-1.7%)  |   4.790 (-1.7%)   |  4.874  |
+===========================================================
+
+Lattice parameters test of crystalline NdN (PBESOL)
+===========================================================
+| NdN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.008  (-2.8%)  |   5.120 (-0.6%)   |  5.151  |
+===========================================================
+
+Lattice parameters test of crystalline TbN (PBESOL)
+===========================================================
+| TbN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.839  (-1.9%)  |   4.720 (-4.3%)   |  4.933  |
+===========================================================
+
+Lattice parameters test of crystalline ErN (PBESOL)
+===========================================================
+| ErN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.783  (-1.2%)  |   4.788 (-1.1%)   |  4.839  |
+===========================================================
+
+Lattice parameters test of crystalline TmN (PBESOL)
+===========================================================
+| TmN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.783  (-0.5%)  |   4.762 (-1.0%)   |  4.809  |
+===========================================================
+
+Lattice parameters test of crystalline ThN (PBESOL)
+===========================================================
+| ThN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.114  (-1.0%)  |   5.119 (-0.9%)   |  5.167  |
+===========================================================
+
+Lattice parameters test of crystalline AcN (PBESOL)
+===========================================================
+|  AcN  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.437  (0.9%)   |   4.954 (-1.2%)   |  5.513  |
+===========================================================
+
+Lattice parameters test of crystalline CfN (PBESOL)
+===========================================================
+| CfN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.829  (-2.2%)  |   4.802 (-2.8%)   |  4.940  |
+===========================================================
+
+Lattice parameters test of crystalline BkN (PBESOL)
+===========================================================
+| BkN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.871  (-1.6%)  |   4.860 (-1.8%)   |  4.951  |
+===========================================================
+
+Lattice parameters test of crystalline NpN (PBESOL)
+===========================================================
+| NpN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.827  (-1.4%)  |   4.923  (0.5%)   |  4.8968 |
+===========================================================
+
+END_COMMENT
+

@@ -1,0 +1,67 @@
+CHARGE = 11                 number of valence electrons
+COARSE = 10.0               coarse energy cutoff (Ha)
+MEDIUM = 11.7               medium energy cutoff (Ha)
+FINE = 12.8                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.22 && VAL=0.2  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.5 && VAL=0.25  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.36 && VAL=0.075  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+This file has been used as Cu_00.otfg until the 4.4 release of Materials Studio.
+It generates a potential that has a ghost state in the conduction band. Ground
+state properties are satisfactory, but optics or ELNES are very bad.
+
+Potential has been superceded by another one with a slightly bigger core radius.
+
+Convergence testing
+===================
+Settings:   MP grid: 7x7x7, Grid: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %
+    Cu          
+250 -1482.076156    2.450607873 3.036544    18.802
+270 -1483.560756    0.966007466 2.839705    11.100
+300 -1484.348722    0.178041846 2.661919    4.145
+340 -1484.511499    0.015264913 2.573489    0.685
+370 -1484.522724    0.004039333 2.566609    0.416
+400 -1484.523535    0.00322823  2.565333    0.366
+500 -1484.524728    0.002035947 2.565393    0.368
+800 -1484.526764    0           2.565037    0.354
+exp                             2.555979    
+
+Structure validation
+====================
+
+Ecut    E0          delta E0    a       delta a %
+    CuCl            
+390 -1914.958196    0.005284696 3.828342    -1.383
+800 -1914.963481    0           3.826729    -1.424
+exp                             3.882016    
+                                            
+Ecut        a       delta a %   
+    CuPd            
+420     3.011772    0.796   
+exp     2.988       
+
+END_COMMENT
+

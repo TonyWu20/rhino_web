@@ -1,0 +1,51 @@
+CHARGE = 10                  number of valence electrons
+COARSE = 7.4                coarse energy cutoff (Ha)
+MEDIUM = 11.0               medium energy cutoff (Ha)
+FINE =   12.9               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+
+Ecut            Energy          Energy Diff             a       % a
+200	-1.13618666E+003	0.19519000	5.07357768	0.41307270
+250	-1.13634126E+003	0.04059000	5.07046103	0.35138975
+300	-1.13637345E+003	0.00840000	5.05964087	0.13724396
+350	-1.13637670E+003	0.00515000	5.05474136	0.04027598
+400	-1.13637848E+003	0.00337000	5.05337707	0.01327476
+450	-1.13638015E+003	0.00170000	5.05317267	0.00922935
+500	-1.13638109E+003	7.600000e-004	5.05241215	-0.00582220
+550	-1.13638157E+003	2.800000e-004	5.05250597	-0.00396542
+600	-1.13638185E+003	0	        5.05270633	0
+exp                                              5.148
+
+
+Lattice parameters test of crystalline Ra (PBESOL)
+===========================================================
+|  Ra   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.045  (-2.0%)  |   5.100 (-0.9%)   |  5.148  |
+===========================================================
+                                
+END_COMMENT
+

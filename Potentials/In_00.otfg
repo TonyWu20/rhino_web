@@ -1,0 +1,74 @@
+CHARGE = 13                 number of valence electrons
+COARSE = 9.0                coarse energy cutoff (Ha)
+MEDIUM = 10.5               medium energy cutoff (Ha)
+FINE = 12.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.3           core radius (a.u.)
+BETA_RADIUS = 2.3           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %       c   delta c %
+    In                  
+230 -1765.862792    0.729510155 3.387175    4.147   5.992957    21.165
+250 -1766.29329     0.299011469 3.472138    6.759   5.00553     1.202
+270 -1766.477875    0.114426337 3.419592    5.144   4.935982    -0.205
+300 -1766.568046    0.024255762 3.383708    4.040   4.895231    -1.028
+330 -1766.584558    0.007743297 3.372258    3.688   4.879389    -1.349
+360 -1766.586491    0.005811289 3.367603    3.545   4.879586    -1.345
+400 -1766.587383    0.004918843 3.368824    3.583   4.8746      -1.446
+500 -1766.590096    0.002205622 3.367482    3.542   4.8728      -1.482
+800 -1766.592302    0           3.365317    3.475   4.873449    -1.469
+exp                             3.2523              4.9461  
+
+Structure validation
+====================
+Ecut        a   delta a %       
+    InAs                
+440     4.374194    2.107       
+exp     4.283922            
+                    
+Ecut        a   delta a %       c   delta c %
+    Sc3In               
+360     6.438201    0.268   5.200022    0.328
+exp     6.421               5.183   
+                    
+Ecut        a   delta a %       
+    InSb                
+440     4.689519    2.374       
+exp     4.580779            
+                    
+Ecut        a   delta a %       c   delta c %
+    BiIn                
+360     4.993823    0.439   4.94158 2.310
+exp     4.972               4.83    
+        
+Ecut        a   delta a %       c   delta c %
+    InN             
+440     3.584578    1.460   5.79045 1.712
+exp     3.533               5.693   
+                    
+Ecut        a   delta a %       
+    InP             
+440     4.212645    1.514       
+exp     4.149833            
+        
+END_COMMENT
+

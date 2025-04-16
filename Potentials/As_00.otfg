@@ -1,0 +1,157 @@
+CHARGE = 5                  number of valence electrons
+COARSE = 6.0                coarse energy cutoff (Ha)
+MEDIUM = 7.3                medium energy cutoff (Ha)
+FINE = 9.9                  fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.6           core radius (a.u.)
+BETA_RADIUS = 1.6           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 0.9                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= VAL=-0.54 && VAL=0.5  Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_SHIFT= VAL=-0.195 && VAL=0.25   Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %   alpha   delta alpha %
+    As                  
+250 -1651.501089    0.045712186     not converged           
+270 -1651.544322    0.0024791       not converged           
+340 -1651.541659    0.005142552 4.197944    2.231   53.788752   -1.281
+370 -1651.540597    0.006204049 4.198164    2.237   53.779498   -1.298
+400 -1651.541097    0.005704018 4.185956    1.939   53.983728   -0.923
+500 -1651.542427    0.004374051 4.182896    1.865   54.032145   -0.834
+800 -1651.546801    0           4.191725    2.080   53.885143   -1.104
+exp                             4.106318            54.48663    
+
+
+Structure validation
+====================
+
+Ecut    E0          delta E0    a       delta a %
+    GaAs            
+250 -2974.741625    0.673173133 4.197043    4.995
+270 -2975.13281     0.281988052 4.127254    3.249
+300 -2975.350391    0.064407667 4.094157    2.421
+370 -2975.406716    0.00808244  4.060638    1.582
+400 -2975.407162    0.007636272 4.060142    1.570
+500 -2975.411254    0.003544751 4.060118    1.569
+800 -2975.414798    0           4.060577    1.581
+exp                             3.997381    
+
+Ecut        a   delta a %
+    SnAs        
+360     4.086983    1.579
+exp     4.023438    
+
+Ecut    E0          delta E0    a       delta a %    b  delta b %   c   delta c %
+    RuAs                            
+360 -8521.659626    0.039370641 5.468719    0.752   6.226383    0.695   3.004099    1.199
+800 -8521.698997    0           5.468387    0.746   6.225303    0.678   3.003822    1.190
+exp                             5.4279              6.1834              2.9685  
+
+Ecut        a   delta a %
+    YAs     
+340     4.116947    0.626
+exp     4.09132 
+
+Ecut        a   delta a %
+    InAs        
+440     4.374194    2.107
+exp     4.283922    
+
+Ecut        a   delta a %
+    SmAs        
+440     4.298526    2.669
+exp     4.186779    
+
+Ecut        a   delta a %
+    YbAs        
+440     4.113553    2.025
+exp     4.031923    
+
+Lattice parameters test of crystalline HoAs (PBESOL)
+===========================================================
+| HoAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.760  (-0.1%)  |   5.753 (-0.3%)   |  5.769  |
+===========================================================
+
+Lattice parameters test of crystalline NdAs (PBESOL)
+===========================================================
+| NdAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.971  (0.2%)   |   6.098 (2.3%)    |  5.958  |
+===========================================================
+
+Lattice parameters test of crystalline TbAs (PBESOL)
+===========================================================
+| TbTe  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.776  (-0.8%)  |   5.534 (-5.0%)   |  5.824  |
+===========================================================
+
+Lattice parameters test of crystalline ErAs (PBESOL)
+===========================================================
+| ErAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.750  (0.3%)   |   5.754 (0.4%)    |  5.732  |
+===========================================================
+
+Lattice parameters test of crystalline TmAs (PBESOL)
+===========================================================
+| TmAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.764  (0.9%)   |   5.743 (0.6%)    |  5.711  |
+===========================================================
+
+Lattice parameters test of crystalline NpAs2 (PBESOL)
+===========================================================
+| NpAs2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.906  (-0.6%)  |   3.999 (1.8%)    |  3.930  |
+|   c   |   7.953  (-2.3%)  |   7.878 (-3.2%)   |  8.137  |
+===========================================================
+
+Lattice parameters test of crystalline CfAs (PBESOL)
+===========================================================
+| CfAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.761  (-0.8%)  |   5.726 (-1.4%)   |  5.809  |
+===========================================================
+
+Lattice parameters test of crystalline BkAs (PBESOL)
+===========================================================
+| BkAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.741  (-1.5%)  |   5.710 (-2.0%)   |  5.829  |
+===========================================================
+
+Lattice parameters test of crystalline NpAs (PBESOL)
+===========================================================
+| NpAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.740  (-1.6%)  |   5.825 (-0.2%)   |  5.8338 |
+===========================================================
+
+Lattice parameters test of crystalline ThAs (PBESOL)
+===========================================================
+| ThAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.932  (-0.8%)  |   5.933 (-0.8%)   |  5.978  |
+===========================================================
+
+END_COMMENT
+

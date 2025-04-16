@@ -1,0 +1,80 @@
+CHARGE = 7                  number of valence electrons
+COARSE = 16.537             coarse energy cutoff (Ha)
+MEDIUM = 18.375             medium energy cutoff (Ha)
+FINE = 20.212               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 7.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+        a           a exp       delta a %   
+LiF     2.929725    2.841155    3.117   
+
+Ecut        a       delta a %   c   delta c %   
+    NiF2                    
+610     4.682418    0.777   3.133216    1.791   
+exp     4.6463              3.0781      
+            
+Ecut        a       delta a %
+    BaF2        
+610     4.443835    1.527
+exp     4.376991    
+
+Ecut        a       delta a %
+    CdF2        
+610     3.890507    2.116
+exp     3.809891
+
+Ecut        a       delta a %   c   delta c %
+    BiOF                
+610     3.824772    2.078   6.266134    0.645
+exp     3.7469              6.226
+
+Ecut        a       delta a %
+    KrF2        
+610     1.92056     1.617
+exp     1.89
+
+Ecut        H-Ar    delta % Ar-F    delta %
+    HArF                
+610     1.37475 3.365   1.98954 0.992
+exp     1.33            1.97
+
+Ecut    Xe-F    delta %
+    XeF2 mol        
+610     2.04117 2.933
+exp     1.983
+
+Ecut        a       delta a %
+    CsF     
+610     4.342119    2.174
+exp     4.249712    
+
+Ecut        a       delta a %
+    KF      
+610     3.821938    1.408
+exp     3.768879
+
+Lattice parameters test of crystalline AcF3 (PBESOL)
+===========================================================
+| AcF3  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   4.234  (-0.8%)  |   diverges        |  4.270  |
+|   c   |   7.494  (-0.5%)  |   diverges        |  7.530  |
+===========================================================
+
+END_COMMENT
+

@@ -1,0 +1,58 @@
+CHARGE = 4                  number of valence electrons
+COARSE = 10.6               coarse energy cutoff (Ha)
+MEDIUM = 12.0               medium energy cutoff (Ha)
+FINE = 13.7                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+BETA_RADIUS = 1.4           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 0.7                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 1          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid: 7x7x7, Grid: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a       delta a %   c   delta c %
+    Be                  
+200 -775.2663598    -0.904756464    2.440745    6.788   3.790375    5.782
+300 -774.3337936     0.027809741        does not converge           
+400 -774.3932755    -0.031672123    2.253982    -1.383  3.528129    -1.537
+500 -774.311598     0.050005355     2.265259    -0.890  3.541066    -1.176
+800 -774.3616033     0              2.244837    -1.783  3.522968    -1.681
+exp                                 2.2856              3.5832  
+
+Structure validation
+====================
+Ecut        a       delta a %       c   delta c %
+    BeO                                                                         
+500     2.692704    -0.193  4.383767    0.150
+        2.6979              4.3772  
+
+Ecut        a       delta a %
+    BeSe        
+420     3.652503    0.514
+exp     3.633822    
+
+Ecut        a       delta a %
+    PdBe        
+420     2.820368    0.262
+exp     2.813   
+
+Ecut        a       delta a %
+    BeS     
+420     3.436928    -0.091
+exp     3.440074    
+
+END_COMMENT
+

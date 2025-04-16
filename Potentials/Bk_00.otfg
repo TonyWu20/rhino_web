@@ -1,0 +1,141 @@
+CHARGE = 19                 number of valence electrons
+COARSE = 12.5               coarse energy cutoff (Ha)
+MEDIUM = 14.0               medium energy cutoff (Ha)
+FINE = 16.0                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.2           core radius (a.u.)
+BETA_RADIUS = 2.2           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.4                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.1           core radius (a.u.)
+BETA_RADIUS = 2.2           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 7          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 3          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = LOCAL   Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: hcp Bk
+Ecut               Energy      Energy Diff             a            % a           c               %c
+300.0000000	-13980.3511000	4.4294500	3.4983532	7.9132783	11.3784216	6.5396979
+400.0000000	-13989.0104000	0.0998000	3.2687217	0.8298656	10.7582603	0.7329342
+500.0000000	-13989.1704000	0.0198000	3.2421351	0.0097492	10.6825522	0.0240558
+600.0000000	-13989.1851000	0.0124500	3.2426551	0.0257908	10.6835428	0.0333314
+700.0000000	-13989.1890000	0.0105000	3.2420210	0.0062308	10.6814920	0.0141290
+800.0000000	-13989.2030000	0.0035000	3.2420315	0.0065562	10.6813922	0.0131945
+900.0000000	-13989.2096000	0.0002000	3.2418720	0.0016349	10.6801690	0.0017416
+1000.0000000	-13989.2100000	0.0000000	3.2418190	0.0000000	10.6799830	0.0000000
+exp						3.428				11.075
+
+Lattice parameters test of crystalline Bk (PBESOL)
+===========================================================
+| Bk    |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.243  (-5.1%)  |   3.382 (-1.0%)   |  3.416  |
+|   c   |  10.684  (-3.5%)  |  10.841 (-2.1%)   | 11.069  |
+===========================================================
+
+Lattice parameters test of crystalline BkP (PBESOL)
+===========================================================
+| BkP   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.554  (-2.0%)  |   5.529 (-2.5%)   |  5.669  |
+===========================================================
+
+Lattice parameters test of crystalline BkN (PBESOL)
+===========================================================
+| BkN   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   4.871  (-1.6%)  |   4.860 (-1.8%)   |  4.951  |
+===========================================================
+
+Lattice parameters test of crystalline BkAs (PBESOL)
+===========================================================
+| BkAs  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.741  (-1.5%)  |   5.710 (-2.0%)   |  5.829  |
+===========================================================
+
+Lattice parameters test of crystalline BkSb (PBESOL)
+===========================================================
+| BkSb  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   6.157  (-0.5%)  |   6.195  (0.1%)   |  6.191  |
+===========================================================
+
+Lattice parameters test of crystalline BkO2 (PBESOL)
+===========================================================
+| BkO2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.357  (0.5%)   |   5.335  (0.1%)   |  5.3315 |
+===========================================================
+
+Lattice parameters test of crystalline BkOI (PBESOL)
+===========================================================
+| BkOI  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.931  (-1.4%)  |   3.927  (-1.5%)  |  3.986  |
+|   c   |   9.306   (1.7%)  |   9.273  (1.4%)   |  9.149  |
+===========================================================
+
+Lattice parameters test of crystalline BkOBr (PBESOL)
+===========================================================
+| BkOBr |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.851  (-2.5%)  |   3.877  (-1.8%)  |  3.95   |
+|   c   |   8.305   (2.5%)  |   7.433  (-8.2%)  |  8.1    |
+===========================================================
+
+END_COMMENT
+

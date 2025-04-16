@@ -1,0 +1,79 @@
+CHARGE = 1                  number of valence electrons
+COARSE = 3.675              coarse energy cutoff (Ha)
+MEDIUM = 7.350              medium energy cutoff (Ha)
+FINE =  11.025              fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 0.8           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 1          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.4             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+Ecut    E0          delta E0    a       delta a %
+    NaH         
+460 -1320.385386    0.15997126  3.411698    -1.130
+800 -1320.545357    0           3.417331    -0.966
+exp                             3.450681    
+
+Ecut        a       delta a %
+    YH2     
+340     3.681367    0.139
+exp     3.676248    
+
+Ecut        a       delta a %               
+    PdH                     
+420     2.919002    2.689               
+exp     2.842569        
+
+Ecut        H-Ar    delta % Ar-F    delta %
+    HArF                
+610     1.37475 3.365   1.98954 0.992
+exp     1.33            1.97
+
+Ecut        a       delta a %
+    CsH     
+330     4.568056    1.146
+exp     4.516291    
+        
+Ecut        a       delta a %
+    RbH     
+330     4.275513    0.107
+exp     4.270925
+
+Lattice parameters test of crystalline TbH2 (PBESOL)
+===========================================================
+| TbH2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.186  (-1.1%)  |   4.956 (-5.5%)   |  5.246  |
+===========================================================
+
+Lattice parameters test of crystalline ErH2 (PBESOL)
+===========================================================
+| ErH2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.174  (1.0%)   |   5.171 (0.9%)    |  5.123  |
+===========================================================
+
+Lattice parameters test of crystalline TmH2 (PBESOL)
+===========================================================
+| TmH2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.186  (1.9%)   |   5.165 (1.5%)    |  5.09   |
+===========================================================
+
+Lattice parameters test of crystalline AcH2 (PBESOL)
+===========================================================
+|  AcH2 |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.794  (2.2%)   |   5.584 (-1.5%)   |  5.67   |
+===========================================================
+
+END_COMMENT
+

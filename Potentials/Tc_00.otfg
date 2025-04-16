@@ -1,0 +1,67 @@
+CHARGE = 9                  number of valence electrons
+COARSE = 9.6                coarse energy cutoff (Ha)
+MEDIUM = 10.6               medium energy cutoff (Ha)
+FINE = 12.1                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.0           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Ultra-fine, xc-functional: PBESOL
+System: metallic Ac
+Ecut    	E0          	delta E0        	a   	delta a %   		c   	delta c %
+200	-4.42100571E+003	12.32871000	3.12311255	14.80690353	4.93998398	13.30690207
+250	-4.43210747E+003	1.22695000	2.77563689	2.03355520	4.44434605	1.93860635
+300	-4.43323898E+003	0.09544000	2.72301242	0.09905784	4.36563276	0.13318384
+350	-4.43332502E+003	0.00940000	2.72083531	0.01902665	4.36064291	0.01873306
+400	-4.43332732E+003	0.00710000	2.72034402	9.665157e-004	4.35991267	0.00198386
+450	-4.43333004E+003	0.00438000	2.72030473	-4.777499e-004	4.35996815	0.00325626
+500	-4.43333118E+003	0.00324000	2.72030051	-6.328677e-004	4.35990265	0.00175397
+550	-4.43333178E+003	0.00264000	2.72030694	-3.965440e-004	4.35986387	8.643739e-004
+600	-4.43333259E+003	0.00183000	2.72031313	-1.691008e-004	4.35987281	0.00106959
+650	-4.43333354E+003	8.800000e-004	2.72030441	-4.895937e-004	4.35986044	7.857390e-004
+700	-4.43333415E+003	2.700000e-004	2.72031074	-2.568260e-004	4.35986711	9.387981e-004
+750	-4.43333424E+003	1.800000e-004	2.72030094	-6.171370e-004	4.35987222	0.00105597
+800	-4.43333442E+003	0		2.72031773	0		4.35982618	0
+exp                             		2.735              		4.388  
+
+Lattice parameters test of crystalline Tc (PBESOL)
+===========================================================
+|   Tc  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   2.720  (-0.5%)  |   2.722 (-0.5%)   |  2.735  |
+|   c   |   4.360  (-0.6%)  |   4.363 (-0.6%)   |  4.388  |
+===========================================================
+
+
+Lattice parameters test of crystalline TcAgO4 (PBESOL)
+===========================================================
+|   Tc  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   5.266  (-0.7%)  |   5.276 (-0.5%)   |  5.3026 |
+|   c   |  11.415  (-3.3%)  |  11.391 (-3.5%)   |  11.81  |
+===========================================================
+ND_COMMENT

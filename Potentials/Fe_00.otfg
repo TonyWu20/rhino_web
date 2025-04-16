@@ -1,0 +1,103 @@
+CHARGE = 8                  number of valence electrons
+COARSE = 9.6                coarse energy cutoff (Ha)
+MEDIUM = 10.7               medium energy cutoff (Ha)
+FINE = 12.1                 fine energy cutoff (Ha)
+LOCAL_CHANNEL = 1           angular momentum of the local potential
+CORE_RADIUS = 2.0           core radius (a.u.)
+BETA_RADIUS = 2.2           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY
+CHANNEL_INFO_BETA_RC = 2.0 && 2.0   Core radius for this channel (a.u.) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 0                L quantum number
+CONFIG_OCC : 1.75           Occupancy of the state
+CONFIG_BLOCK_END
+
+CORE_HOLE_INFO:
+
+LOCAL_CHANNEL = 3           angular momentum of the local potential
+CORE_RADIUS = 2.5           core radius (a.u.)
+BETA_RADIUS = 2.5           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.5                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 3          N quantum number
+CHANNEL_INFO_L = 2          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 4          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 0                L quantum number
+CONFIG_OCC : 1.95           Occupancy of the state
+CONFIG_BLOCK_END
+CONFIG_BLOCK_START          Description of the atomic configuration for the generation (one block per channel)
+CONFIG_N : 4                N quantum number
+CONFIG_L : 1                L quantum number
+CONFIG_OCC : 0.05           Occupancy of the state
+CONFIG_BLOCK_END
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 4.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0        a   delta a %
+    Fe          
+230 -759.5769699    2.608785991 not converged   
+250 -761.2215307    0.964225158 2.792359    12.487
+270 -761.8267342    0.359021649 2.519241    1.485
+300 -762.1133594    0.0723965   2.490619    0.332
+330 -762.1701784    0.015577426 2.478717    -0.147
+360 -762.1784661    0.007289758 2.475651    -0.271
+400 -762.1801714    0.005584517 2.475028    -0.296
+500 -762.1834713    0.002284584 2.475102    -0.293
+800 -762.1857559    0           2.475056    -0.295
+exp                             2.482375        
+
+Structure validation
+====================
+Ecut        a       delta a %   c   delta c %       
+    FeSi2                       
+370     2.678451    -0.207  5.115782    -0.238      
+exp     2.684               5.128           
+                            
+Ecut        a       delta a %   c   delta c %       
+    Fe3Ge                       
+370     5.134194    -0.673  4.212237    -0.231      
+exp     5.169               4.222           
+                            
+Ecut        a       delta a %   b   delta b %   c   delta c %
+    Fe3C                        
+390     5.055207    -0.585  6.663275    -1.084  4.474343    -0.879
+exp     5.08493             6.73631             4.514   
+                            
+Ecut        a       delta a %               
+    FeS2        
+370     5.366318    -1.138
+exp     5.4281      
+
+Ecut        a       delta a %
+    FeCo        
+370     2.848791    -0.287
+exp     2.857   
+
+END_COMMENT
+

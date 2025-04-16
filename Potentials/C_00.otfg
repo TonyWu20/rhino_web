@@ -1,0 +1,99 @@
+CHARGE = 4                  number of valence electrons
+COARSE = 9.187              coarse energy cutoff (Ha)
+MEDIUM = 11.025             medium energy cutoff (Ha)
+FINE = 12.862               fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 1.4           core radius (a.u.)
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 2          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+NLCC = 'yes'                Use non-linear core corrections? (allowed strings are 'yes' and 'no', not case-sensitive)
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 6.0             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Structure validation
+====================
+Ecut        a   delta a %   c   delta c %
+    Ta2C                
+390     3.11014 0.137   4.907806    -0.780
+exp     3.1059          4.9464  
+                                    
+Ecut        a   delta a %       
+    TaC             
+390     3.161126    0.551       
+exp     3.143797    
+
+Ecut        a   delta a %   
+    TiC         
+390     3.06483     0.146   
+exp     3.060358
+
+Ecut        a   delta a %
+    VC      
+450     2.928938    -0.549
+exp     2.9451  
+
+Ecut        a       delta a %   b   delta b % c delta c %
+    Fe3C                        
+390     5.055207    -0.585  6.663275    -1.084  4.474343    -0.879
+exp     5.08493             6.73631             4.514   
+            
+Ecut        a       delta a %   c   delta c %       
+    WC                      
+390     2.920649    0.487   2.843186    0.232       
+exp     2.9065              2.8366      
+
+Ecut        a       delta a %   c   delta c %
+    LuC2                
+390     3.548014    -0.421      6.030462    1.114
+exp     3.563                   5.964   
+    
+Ecut        a       delta a %
+    UC      
+440     3.496901    -0.114
+exp     3.500886    
+
+Ecut        a       delta a %   c   delta c %
+    UC2             
+440     3.514575    -0.069      5.958154    -0.482
+exp     3.517                   5.987   
+    
+Lattice parameters test of crystalline HoC2 (PBESOL)
+===========================================================
+| HoC2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.611  (-0.6%)  |   3.597 (-1.0%)   |  3.633  |
+|   c   |   6.135  ( 0.0%)  |   6.112 (-0.3%)   |  6.132  |
+===========================================================
+
+Lattice parameters test of crystalline TbC2 (PBESOL)
+===========================================================
+| TbC2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   3.618  (-1.6%)  |   3.480 (-5.4%)   |  3.678  |
+===========================================================
+
+Lattice parameters test of crystalline ErC2 (PBESOL)
+===========================================================
+| ErC2  |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+|  a=b  |   3.624   (0.3%)  |   3.631  (0.8%)   |  3.612  |
+|   c   |   6.137   (0.8%)  |   6.172  (1.4%)   |  6.087  |
+===========================================================
+
+Lattice parameters test of crystalline ThC (PBESOL)
+===========================================================
+| ThC   |  this pot. (err)  |  USP pot. (err)   |  Expt.  |
+-----------------------------------------------------------
+| a=b=c |   5.285  (-1.1%)  |   5.283 (-1.2%)   |  5.346  |
+===========================================================
+
+END_COMMENT
+

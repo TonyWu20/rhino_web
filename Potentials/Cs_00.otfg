@@ -1,0 +1,76 @@
+CHARGE = 9                  number of valence electrons
+COARSE = 4.4                coarse energy cutoff (Ha)
+MEDIUM = 5.9                medium energy cutoff (Ha)
+FINE = 7.4                  fine energy cutoff (Ha)
+LOCAL_CHANNEL = 2           angular momentum of the local potential
+CORE_RADIUS = 2.7           core radius (a.u.)
+BETA_RADIUS = 2.7           beta_rc (a.u.) - requires the presence of RINNER
+RINNER = 1.6                Rinner (a.u.) - requires the presence of BETA_RADIUS
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP     Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 6          N quantum number
+CHANNEL_INFO_L = 0          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_SHIFT= 0.0 && 0.125 Energy shift w.r.t. atomic eigenvalues (Ha) (as many as TYPE entries)
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+CHANNEL_INFO_BLOCK_START    Start of the information block for the generated channels 
+CHANNEL_INFO_N = 5          N quantum number
+CHANNEL_INFO_L = 1          L quantum number (s=0, p=1, d=2, f=3)
+CHANNEL_INFO_TYPE = USP && USP  Type: one of NCP, USP, LOCAL, NCP_PROJ_ONLY,  USP_PROJ_ONLY 
+CHANNEL_INFO_BLOCK_END      End of the information block for the generated channels 
+PSEUDO_SCHEME = 'qc'        Which scheme to use; allowed values are tm, pn, fh, qc, qb, es, 2b
+PSEUDO_QC = 3.5             Qc value (used only by qc, qb, and es schemes)
+
+START_COMMENT
+
+Convergence testing
+===================
+Settings:   MP grid and grid_scale: Fine, xc-functional: PBE
+
+Ecut    E0          delta E0    a   delta a %
+    Cs          
+120 -792.5507557    0.026989587 5.850641    10.028
+160 -792.5760043    0.001740933 5.349566    0.605
+200 -792.5765987    0.001146549 5.317396    0.000
+240 -792.5768877    0.000857499 5.317396    0.000
+270 -792.5771899    0.000555349 5.317396    0.000
+300 -792.5774093    0.000335961 5.317396    0.000
+360 -792.5773207    0.000424589 5.317396    0.000
+400 -792.5773942    0.000350999 5.317396    0.000
+500 -792.5775552    0.000190003 5.317396    0.000
+800 -792.5777452    0           5.317396    0.000
+exp                             5.317396    
+
+Structure validation
+====================
+Ecut        a       delta a %
+    CsI     
+300     4.67499     2.522
+exp     4.56    
+        
+Ecut        a       delta a %
+    CsH     
+330     4.568056    1.146
+exp     4.516291    
+        
+Ecut        a       delta a %
+    CsF     
+610     4.342119    2.174
+exp     4.249712    
+
+Ecut        a       delta a %
+    CsCl        
+280     4.21707     2.282
+exp     4.123   
+
+Ecut        a       delta a %
+    CsBr        
+270     4.398253    2.595
+exp     4.287   
+    
+END_COMMENT
+
