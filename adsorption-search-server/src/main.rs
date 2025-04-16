@@ -40,9 +40,11 @@ async fn main() {
         .route("/", get(root_page))
         .nest("/form_error", form_error_router())
         .nest_service("/assets", ServeDir::new("assets"))
+        .nest_service("/Potentials", ServeDir::new("Potentials"))
+        .nest_service("/seeding-apps", ServeDir::new("seeding-apps"))
         .nest_service("/tempData", ServeDir::new("tempData"))
         .route("/submit_form", post(accept_form))
-        .route("/download_file/:filename", get(download_result))
+        .route("/download_file/{filename}", get(download_result))
         .route("/my_wasm.js", get(load_js_wasm))
         .route("/new_style.css", get(css_sheet))
         .layer(RequestBodyLimitLayer::new(
@@ -62,12 +64,6 @@ async fn main() {
         );
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 10000));
-    #[cfg(debug_assertions)]
-    {
-        let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    }
-    // let addr = SocketAddr::from(([192, 168, 1, 106], 3000));
-    // let addr = SocketAddr::from(([10, 147, 17, 25], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     info!("listening on {}", addr);
     info!(

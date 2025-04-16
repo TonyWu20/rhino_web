@@ -13,13 +13,13 @@ keywords.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = {version = "0.7", features=["tokio", "http1", "http2", "form","multipart"]}
+axum = {version = "0.8", features=["tokio", "http1", "http2", "form","multipart"]}
 tokio = { version = "1", features = ["full"] }
 hyper = { version = "1.2", features = ["full"] }
-tower-http = {version="0.5", features = ["full"]}
+tower-http = {version="0.6", features = ["full"]}
 serde = {version="1.0", features=["derive"]}
 html = "0.6.3"
-axum_typed_multipart = "0.11.1"
+axum_typed_multipart = "0.15.1"
 tempfile = "3.10.1"
 # adsorption-search-util = {path = "../adsorption-search-util"}
 adsorption-search-ui = { path = "../adsorption-search-ui"}
@@ -27,8 +27,14 @@ castep-periodic-table = "0.5"
 http-body-util = "0.1.1"
 tracing = "0.1"
 tracing-subscriber = "0.3"
-zip = {version="2.2.0", features=["deflate-flate2"]}
+zip = {version="2.6.1", features=["deflate-flate2"]}
 chrono = "0.4.38"
-rhino = {git="https://github.com/TonyWu20/chemrust-nasl.git", branch = "main"}
+rhino = {path = "../../chemrust-nasl/chemrust-nasl-app"}
+chemrust-nasl = {path = "../../chemrust-nasl/chemrust-nasl"}
 walkdir = "2.5.0"
 open = "5.3.0"
+castep-cell-io = "0.2.17"
+crystal-cif-io = "0.1.2"
+chemrust-core = "0.5.1"
+anyhow = "1.0.97"
+rayon = "1.10.0"
