@@ -17,3 +17,7 @@ Cargo.lock
 # Added by cargo
 
 /target
+sessions
+
+# Prebuilt seeding app archives
+castep-seeding-app-*.zip
