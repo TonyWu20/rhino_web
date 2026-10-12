@@ -1,4 +1,4 @@
-use castep_periodic_table::{data::ELEMENT_TABLE, element::LookupElement};
+use castep_periodic_table::element::ElementSymbol;
 use gloo::{
     dialogs::alert,
     events::{EventListener, EventListenerOptions},
@@ -167,7 +167,7 @@ fn input_field_error(error_element: &Element, error: bool) {
 
 #[wasm_bindgen]
 pub fn check_symbol_input(input: &str) -> bool {
-    ELEMENT_TABLE.get_by_symbol(input).is_some()
+    input.trim().parse::<ElementSymbol>().is_ok()
 }
 
 #[wasm_bindgen]

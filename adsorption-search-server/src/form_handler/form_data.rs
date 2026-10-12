@@ -1,7 +1,6 @@
 use std::{
     fmt::Display,
     path::{Path, PathBuf},
-    str::FromStr,
 };
 
 use axum_typed_multipart::{FieldData, TryFromMultipart};
@@ -128,34 +127,6 @@ impl ParamForm {
         let atom_ids_text = coord_site.connecting_atoms_msg();
         Path::new(&format!("{}_{}.cell", self.filename, atom_ids_text)).to_path_buf()
     }
-    pub fn export_to_html(&self) -> String {
-        let element_line = format!("New Element Symbol: {}", self.element_symbol());
-        let bondlength_line = format!("Target Bondlength (Å): {}", self.target_bondlength());
-        let x_range_line = format!(
-            "Search range along x-axis: {:.3} - {:.3}",
-            self.x_min(),
-            self.x_max()
-        );
-        let y_range_line = format!(
-            "Search range along y-axis: {:.3} - {:.3}",
-            self.y_min(),
-            self.y_max()
-        );
-        let z_range_line = format!(
-            "Search range along z-axis: {:.3} - {:.3}",
-            self.z_min(),
-            self.z_max()
-        );
-        let body = [
-            element_line,
-            bondlength_line,
-            x_range_line,
-            y_range_line,
-            z_range_line,
-        ];
-        body.join("<br>")
-    }
-
     pub fn element_symbol(&self) -> ElementSymbol {
         self.element_symbol
     }

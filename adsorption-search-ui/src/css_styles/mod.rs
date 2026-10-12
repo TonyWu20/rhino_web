@@ -55,13 +55,9 @@ impl ElementStyleBuilder {
         }
     }
     fn build(self) -> Result<ElementStyle, BuildError> {
-        if self.name.is_some() && self.style.is_some() {
-            Ok(ElementStyle {
-                name: self.name.unwrap(),
-                style: self.style.unwrap(),
-            })
-        } else {
-            Err(BuildError)
+        match (self.name, self.style) {
+            (Some(name), Some(style)) => Ok(ElementStyle { name, style }),
+            _ => Err(BuildError),
         }
     }
 }

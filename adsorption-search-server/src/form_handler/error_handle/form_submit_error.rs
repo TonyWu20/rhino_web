@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
 use adsorption_search_ui::html_pages::upload_response_page::{
-    build_error_format_page, build_error_symbol_page, build_form_error_general_page,
+    build_error_format_page, build_form_error_general_page,
 };
 use axum::{
     response::{Html, IntoResponse, Redirect, Response},
@@ -11,8 +11,6 @@ use axum::{
 
 #[derive(Debug)]
 pub enum FormSubmitError {
-    FormDataNotCollected,
-    InvalidSymbol(String),
     NoFileName,
     InvalidFileFormat(FormatError),
     ParseFileError(FileError),
@@ -23,10 +21,6 @@ pub enum FormSubmitError {
 impl Display for FormSubmitError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            FormSubmitError::FormDataNotCollected => {
-                f.write_str("Form data is not collected properly.")
-            }
-            FormSubmitError::InvalidSymbol(s) => write!(f, "Element symbol {} is not valid.", s),
             FormSubmitError::NoFileName => f.write_str("No filename is given."),
             FormSubmitError::InvalidFileFormat(error) => write!(f, "{}", error),
             FormSubmitError::ParseFileError(p) => write!(f, "{:?}", p),
@@ -58,15 +52,9 @@ pub enum FileError {
     ParseFail,
 }
 
-pub const ACCEPT_EXTENSIONS: [&str; 2] = ["cif", "cell"];
-
 impl IntoResponse for FormSubmitError {
     fn into_response(self) -> Response {
         match self {
-            Self::InvalidSymbol(symbol) => {
-                Html(build_error_symbol_page(symbol).to_string()).into_response()
-            }
-            Self::FormDataNotCollected => Html("No form data collected").into_response(),
             Self::InvalidFileFormat(_) => {
                 Redirect::to("/form_error/invalid_format").into_response()
             }
@@ -138,16 +126,6 @@ async fn execution_error() -> impl IntoResponse {
         build_form_error_general_page(
             "Error: Failed to complete the search".into(),
             "Rhino failed to complete the search or export results.".into(),
-        )
-        .to_string(),
-    )
-}
-
-async fn zip_error() -> impl IntoResponse {
-    Html(
-        build_form_error_general_page(
-            "Error: Failed to compress results into zip".into(),
-            "Result files were not compressed successfully. Please check /tempData".into(),
         )
         .to_string(),
     )

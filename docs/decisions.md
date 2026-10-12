@@ -65,3 +65,28 @@ and `chemrust-parser` / `chemrust-scanner` were pruned in commit `a27f7f2`).
 - Stale-but-present dependencies left untouched: `gloo` 0.11,
   `wasm-bindgen` 0.2.100, `web-sys` 0.3.77, `html` 0.6.3, `css-style`
   0.14.1.
+
+## 2026-10-10: warning and stale-dependency cleanup
+
+### Decisions
+
+| Decision | Reason |
+|---|---|
+| Remove dead error surface | `FormDataNotCollected`, `InvalidSymbol`, `ACCEPT_EXTENSIONS`, `zip_error`, `DownloadError`, and `export_to_html` were never constructed or called. They were removed |
+| Box the `AcceptedFile::Cell` variant | Clippy `large_enum_variant`. `CellDocument` is at least 1320 bytes |
+| Bump `gloo` to 0.12 | 0.12.0 is the newest release |
+| Align `castep-periodic-table` to 0.5 in the wasm crate | The other crates already use 0.5.2. The 0.3 API `get_by_symbol` returned an `Option`. The 0.5 API returns a reference and panics on unknown symbols, so symbol validation now uses the fallible `FromStr` implementation |
+| Update `wasm-bindgen` to 0.2.129 and `web-sys` / `js-sys` to 0.3.106 | Latest releases in the same major line |
+| Leave `html` at 0.6.3 and `css-style` at 0.14.1 | Both are already the newest published releases |
+| Drop the ignored `[profile.release]` from the wasm manifest | Profiles in a non-root package are ignored by cargo, and `lto` is not allowed at the package profile level. LTO was therefore never in effect |
+| Ignore `castep-seeding-app-*.zip` in `.gitignore` | The archives are prebuilt artifacts, not sources |
+
+### Verification performed
+
+- `cargo build --workspace`: exit 0, zero warnings.
+- `cargo clippy --workspace`: zero warnings.
+- `cargo build -p adsorption-search-ui-wasm --target wasm32-unknown-unknown` inside the Nix dev shell: exit 0.
+
+### Known remaining issue
+
+- `proc-macro-error2 2.0.1` future-incompatibility note. 2.0.1 is the newest release on crates.io, so the notice cannot be fixed from this repository. It comes in transitively through the `crystal-cif-io` git dependency.

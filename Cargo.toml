@@ -9,7 +9,6 @@ resolver = "2"
 
 
 [workspace.package]
-name = "web-model-adsorption-search"
 description = "Web app version of model-adsorption-search"
 authors = ["TonyWu20"]
 readme = "README.md"

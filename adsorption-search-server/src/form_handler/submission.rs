@@ -29,7 +29,6 @@ use super::{
     error_handle::{FileError, FormSubmitError, FormatError},
     form_data::{FormData, ParamForm},
 };
-// use super::error_handle::ACCEPT_EXTENSIONS;
 use castep_periodic_table::element::ElementSymbol;
 use rhino_lib::{
     run,
@@ -39,7 +38,7 @@ use rhino_lib::{
 
 pub enum AcceptedFile {
     Cif(CifDocument),
-    Cell(CellDocument),
+    Cell(Box<CellDocument>),
 }
 
 /// # TODO
@@ -58,10 +57,10 @@ pub fn check_file_and_read_to_string(
         .read_to_string(&mut ret)
         .map_err(|_| FormSubmitError::ParseFileError(FileError::NotStringContent))?;
     match ext {
-        AcceptExt::Cell => Ok(AcceptedFile::Cell(
+        AcceptExt::Cell => Ok(AcceptedFile::Cell(Box::new(
             parse::<CellDocument>(&ret)
                 .map_err(|_| FormSubmitError::ParseFileError(FileError::ParseFail))?,
-        )),
+        ))),
         AcceptExt::Cif => Ok(AcceptedFile::Cif(
             CifDocument::parse_from_str(&mut ret.as_str())
                 .map_err(|_| FormSubmitError::ParseFileError(FileError::ParseFail))?,
@@ -195,12 +194,6 @@ pub async fn accept_form(
     ];
     let body = Body::from(zip_file);
     let download_response = (headers, body).into_response();
-    // let param_text = param_form.export_to_html();
-    // let page = build_upload_response_page(
-    //     param_text,
-    //     zip_path.file_stem().unwrap().to_string_lossy().to_string(),
-    // )
-    // .to_string();
     Ok(download_response)
 }
 
@@ -213,7 +206,7 @@ enum AcceptExt {
     Cell,
 }
 
-/// Check the file extension; if the file extension is not in the supported list `ACCEPT_EXTENSIONS`, return err;
+/// Check the file extension. Return an error when the extension is neither `cif` nor `cell`.
 fn validate_extension(file_path: &Path) -> Result<AcceptExt, FormSubmitError> {
     let file_extension = file_path
         .extension()
