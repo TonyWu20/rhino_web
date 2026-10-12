@@ -122,6 +122,12 @@ impl ParamForm {
     pub fn z_max(&self) -> f64 {
         self.z_max
     }
+
+    /// File name of a cell export for one coord site.
+    pub fn cell_export_filename(&self, coord_site: &impl chemrust_nasl::CoordSite) -> PathBuf {
+        let atom_ids_text = coord_site.connecting_atoms_msg();
+        Path::new(&format!("{}_{}.cell", self.filename, atom_ids_text)).to_path_buf()
+    }
     pub fn export_to_html(&self) -> String {
         let element_line = format!("New Element Symbol: {}", self.element_symbol());
         let bondlength_line = format!("Target Bondlength (Å): {}", self.target_bondlength());

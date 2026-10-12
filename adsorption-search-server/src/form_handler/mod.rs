@@ -1,3 +1,4 @@
+mod cell_model;
 mod download;
 pub mod error_handle;
 mod form_data;

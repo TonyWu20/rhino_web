@@ -1,15 +1,18 @@
 [package]
 name = "adsorption-search-util"
 version = "0.1.0"
-author = ["Tony Wu <tony.w21@gmail.com>"]
+authors = ["Tony Wu <tony.w21@gmail.com>"]
 edition = "2021"
+description = "Shared helpers for the adsorption search web app"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 
 [dependencies]
-chemrust-core = {path = "../../chemrust/chemrust-core"}
-chemrust-parser = {path = "../../chemrust/chemrust-parser"}
-chemrust-scanner = {path="../../chemrust/chemrust-scanner"}
 castep-periodic-table = "0.5"
-rhino = {path = "../../chemrust-nasl/chemrust-nasl-app"}
+castep-cell-io = "0.7.0"
+castep-cell-fmt = "0.3"
+chemrust-core = "0.5.1"
+chemrust-nasl = {git = "https://github.com/TonyWu20/chemrust-nasl", branch = "dev"}
+rhino = {git = "https://github.com/TonyWu20/chemrust-nasl", branch = "dev"}
+nalgebra = "0.33"

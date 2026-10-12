@@ -11,9 +11,11 @@ use axum::{
     response::IntoResponse,
 };
 use axum_typed_multipart::{FieldData, FieldMetadata, TypedMultipart};
-use castep_cell_io::{CellDocument, CellParser};
+use castep_cell_fmt::{format::to_string_many_spaced, parse, ToCellFile};
+use castep_cell_io::CellDocument;
+use castep_cell_fmt::Error as CError;
 use chemrust_core::data::lattice::CrystalModel;
-use chemrust_nasl::SearchReports;
+use chemrust_nasl::{CoordSite, SearchReports, Visualize};
 use crystal_cif_io::CifDocument;
 use hyper::header;
 use tempfile::NamedTempFile;
@@ -23,15 +25,15 @@ use zip::{
 };
 
 use super::{
+    cell_model,
     error_handle::{FileError, FormSubmitError, FormatError},
     form_data::{FormData, ParamForm},
 };
 // use super::error_handle::ACCEPT_EXTENSIONS;
 use castep_periodic_table::element::ElementSymbol;
 use rhino_lib::{
-    execution::ExportFile,
     run,
-    seeding::{get_all_potentials, ContentStorage, FileModel},
+    seeding::{ContentStorage, FileModel},
     RhinoExport,
 };
 
@@ -56,12 +58,10 @@ pub fn check_file_and_read_to_string(
         .read_to_string(&mut ret)
         .map_err(|_| FormSubmitError::ParseFileError(FileError::NotStringContent))?;
     match ext {
-        AcceptExt::Cell => {
-            let mut parser = CellParser::from(&ret);
-            Ok(AcceptedFile::Cell(parser.parse().map_err(|_| {
-                FormSubmitError::ParseFileError(FileError::ParseFail)
-            })?))
-        }
+        AcceptExt::Cell => Ok(AcceptedFile::Cell(
+            parse::<CellDocument>(&ret)
+                .map_err(|_| FormSubmitError::ParseFileError(FileError::ParseFail))?,
+        )),
         AcceptExt::Cif => Ok(AcceptedFile::Cif(
             CifDocument::parse_from_str(&mut ret.as_str())
                 .map_err(|_| FormSubmitError::ParseFileError(FileError::ParseFail))?,
@@ -104,36 +104,42 @@ pub async fn accept_form(
         potential_loc: Path::new("Potentials").to_path_buf(),
     };
     // Execute
-    let results = match file_content {
+    let results: Vec<(CellDocument, PathBuf)> = match file_content {
         AcceptedFile::Cif(cif_document) => {
             let datablock = cif_document.data_blocks().map(|v| v[0].clone()).unwrap();
             let search_report =
                 run(&datablock, &param_form).map_err(|_| FormSubmitError::Execution)?;
-            export_to_mem(datablock, &search_report, &param_form).await
+            export_cif_sites(&datablock, &search_report, &param_form)
+                .map_err(|_| FormSubmitError::Execution)?
         }
 
-        AcceptedFile::Cell(cell_document) => {
-            let search_report = run(&cell_document, &param_form);
-            let search_report = search_report.map_err(|_| FormSubmitError::Execution)?;
-            export_to_mem(cell_document, &search_report, &param_form).await
+        AcceptedFile::Cell(doc) => {
+            let model = cell_model::CellModelAdapter::new(&doc);
+            let search_report =
+                run(&model, &param_form).map_err(|_| FormSubmitError::Execution)?;
+            export_cell_sites(&doc, &search_report, &param_form)
         }
     };
-    let all_potentials = get_all_potentials(&results, param_form.potential_loc())
-        .map_err(|_| FormSubmitError::Execution)?
+    let potentials = cell_model::potential_names(
+        &results.iter().map(|(doc, _)| doc).collect::<Vec<&CellDocument>>(),
+    );
+    let all_potentials = cell_model::read_potentials(&potentials, param_form.potential_loc())
+        .map_err(|_| FormSubmitError::Execution)?;
+    let struct_files: Vec<FileModel> = results
         .into_iter()
-        .map(|(name, potential_file)| {
-            FileModel::new(Path::new(&name).to_path_buf(), potential_file.0)
-        })
-        .collect::<Vec<FileModel>>();
-    let struct_files = results
-        .into_iter()
-        .map(|c| {
+        .map(|(doc, file_name)| {
             FileModel::new(
-                c.file_name().to_path_buf(),
-                c.file().to_string().into_bytes(),
+                file_name,
+                to_string_many_spaced(&doc.to_cell_file()).into_bytes(),
             )
         })
-        .collect::<Vec<FileModel>>();
+        .collect();
+    let potential_files: Vec<FileModel> = all_potentials
+        .into_iter()
+        .map(|(name, bytes)| {
+            FileModel::new(Path::new(&name).to_path_buf(), bytes)
+        })
+        .collect();
     let seed_apps = [
         (
             "seeding-apps/arm64-macOS/castep-seeding-app",
@@ -168,7 +174,7 @@ pub async fn accept_form(
     let seed_files = [
         (ContentStorage::new(seed_apps), app_options),
         (
-            ContentStorage::new([struct_files, all_potentials].concat()),
+            ContentStorage::new([struct_files, potential_files].concat()),
             options,
         ),
     ]
@@ -179,14 +185,6 @@ pub async fn accept_form(
         .await
         .map_err(|_| FormSubmitError::ZipFileError)?]
     .concat();
-    // let it = WalkDir::new(task_table.export_dir()).into_iter();
-    // zip_dir(
-    //     &mut it.filter_map(|e| e.ok()),
-    //     task_table.export_dir(),
-    //     zip_file,
-    //     zip::CompressionMethod::DEFLATE,
-    // )
-    // .map_err(|_| FormSubmitError::ZipFileError)?;
     // Build response page
     let headers = [
         (header::CONTENT_TYPE, "application/zip"),
@@ -215,7 +213,7 @@ enum AcceptExt {
     Cell,
 }
 
-/// Check the file extension; if the extension is not in the supported list `ACCEPT_EXTENSIONS`, return err;
+/// Check the file extension; if the file extension is not in the supported list `ACCEPT_EXTENSIONS`, return err;
 fn validate_extension(file_path: &Path) -> Result<AcceptExt, FormSubmitError> {
     let file_extension = file_path
         .extension()
@@ -233,29 +231,69 @@ fn validate_extension(file_path: &Path) -> Result<AcceptExt, FormSubmitError> {
     }
 }
 
-async fn export_to_mem(
-    base_model: impl CrystalModel,
+/// Builds one export document per viable site for a parsed 0.7.0 cell
+/// document. Optional blocks of the input document are preserved.
+fn export_cell_sites(
+    doc: &CellDocument,
     search_report: &SearchReports,
     param_form: &ParamForm,
-) -> Vec<ExportFile<CellDocument, PathBuf>> {
-    let part_single_points = search_report
-        .viable_single_points()
-        .map(|points| param_form.create_all_sites::<CellDocument>(&base_model, points));
-    let part_double = search_report
-        .viable_double_points()
-        .map(|points| param_form.create_all_sites::<CellDocument>(&base_model, points));
-    let part_multi = search_report
-        .points()
-        .map(|points| param_form.create_all_sites::<CellDocument>(&base_model, points));
+) -> Vec<(CellDocument, PathBuf)> {
+    let element = param_form.new_element();
     [
-        // If it is `None`, `unwrap_or_default` returns an empty Vec
-        part_single_points,
-        part_double,
-        part_multi,
+        build_cell_points(doc, search_report.viable_single_points(), element, param_form),
+        build_cell_points(doc, search_report.viable_double_points(), element, param_form),
+        build_cell_points(doc, search_report.points(), element, param_form),
     ]
-    .into_iter()
-    .flat_map(|part| part.unwrap_or_default())
-    .collect::<Vec<ExportFile<CellDocument, PathBuf>>>()
+    .concat()
+}
+
+fn build_cell_points<P: CoordSite + Visualize>(
+    doc: &CellDocument,
+    points: Option<&Vec<P>>,
+    element: &ElementSymbol,
+    param_form: &ParamForm,
+) -> Vec<(CellDocument, PathBuf)> {
+    let Some(v) = points else {
+        return Vec::new();
+    };
+    v.iter()
+        .map(|site| {
+            let doc = cell_model::add_site_to_cell_document(doc, site, element);
+            (doc, param_form.cell_export_filename(site))
+        })
+        .collect()
+}
+
+/// Builds one export document per viable site from a CIF data block.
+fn export_cif_sites(
+    model: &impl CrystalModel,
+    search_report: &SearchReports,
+    param_form: &ParamForm,
+) -> Result<Vec<(CellDocument, PathBuf)>, CError> {
+    let element = param_form.new_element();
+    let parts = [
+        build_cif_points(model, search_report.viable_single_points(), element, param_form)?,
+        build_cif_points(model, search_report.viable_double_points(), element, param_form)?,
+        build_cif_points(model, search_report.points(), element, param_form)?,
+    ];
+    Ok(parts.concat())
+}
+
+fn build_cif_points<P: CoordSite + Visualize>(
+    model: &impl CrystalModel,
+    points: Option<&Vec<P>>,
+    element: &ElementSymbol,
+    param_form: &ParamForm,
+) -> Result<Vec<(CellDocument, PathBuf)>, CError> {
+    let Some(v) = points else {
+        return Ok(Vec::new());
+    };
+    v.iter()
+        .map(|site| {
+            let doc = cell_model::cell_document_from_model(model, element, site)?;
+            Ok((doc, param_form.cell_export_filename(site)))
+        })
+        .collect()
 }
 
 async fn create_zip(
@@ -279,5 +317,6 @@ async fn create_zip(
             Ok(())
         })?;
     zip.finish()?;
-    Ok(Bytes::from(zip_buf.into_inner()))
+    let out = zip_buf.into_inner();
+    Ok(Bytes::from(out))
 }
