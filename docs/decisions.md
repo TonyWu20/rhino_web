@@ -90,3 +90,14 @@ and `chemrust-parser` / `chemrust-scanner` were pruned in commit `a27f7f2`).
 ### Known remaining issue
 
 - `proc-macro-error2 2.0.1` future-incompatibility note. 2.0.1 is the newest release on crates.io, so the notice cannot be fixed from this repository. It comes in transitively through the `crystal-cif-io` git dependency.
+
+## 2026-10-10: pin the render.com deployment toolchain
+
+- Added `rust-toolchain.toml` with `channel = "1.99.0"`.
+- The render.com build service reads this file through rustup.
+- Version choice: the parent `flake.nix` and this repository's `flake.nix`
+  both use `fenix stable`. Both flake locks resolve it to the same toolchain,
+  Rust 1.99.0 (release date 2026-10-01).
+- The file pins the version only. The Nix flake remains the source of the
+  development components (clippy, rustfmt, rust-analyzer) and the
+  `wasm32-unknown-unknown` target.

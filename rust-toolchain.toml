@@ -1,0 +1,5 @@
+# Pin the toolchain to the fenix stable version used by the flake.
+# Both flake locks resolve fenix "stable" to 1.99.0 (2026-10-01).
+# The render.com build service reads this file through rustup.
+[toolchain]
+channel = "1.99.0"
